@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css'
-import { Home } from './components/Home';
-import { About } from './components/About';
-import { Login } from './components/Login';
-import { Signup } from './components/Signup';
-import { Contactus } from './components/Contactus';
+import { Home } from './pages/Home_main';
+import { About } from './pages/About';
+import { Login } from './pages/Login';
+import { Signup } from './pages/Signup';
+import { Contactus } from './pages/Contactus';
 import Header from './components/Header';
 
 
