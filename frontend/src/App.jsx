@@ -5,6 +5,7 @@ import  { Login }  from './pages/Login.jsx';
 import  Signup  from './pages/Signup.jsx';
 import { Contactus } from './pages/Contactus.jsx';
 import Header from './components/Header.jsx';
+import Jobs from './pages/Jobs.jsx';
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
           <Route path = "/login" element={<Login/>}/>
           <Route path = "/signup" element={<Signup/>}/>
           <Route path = "/about" element={<About/>}/>
+          <Route path = "/jobs" element={<Jobs/>}/>
           <Route path = "/contactus" element={<Contactus/>}/>
        </Routes>
     </BrowserRouter>

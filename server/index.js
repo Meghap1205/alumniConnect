@@ -3,12 +3,24 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const studentRoutes = require("./routes/student.routes.js");
 const studentauthRoutes = require("./routes/student_auth.routes.js");
+const studentJobRoutes =require("./routes/studentJobRoutes.js")
 
+const cors = require("cors");
 
 dotenv.config();
 const app = express();
 
 app.use(express.json());
+
+const corsOptions = {
+  origin: "http://localhost:5173",
+  methods: "GET,POST, PUT, HEAD, DELETE, PATCH",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+
 
 mongoose
   .connect(process.env.MONGO)
@@ -25,6 +37,7 @@ app.listen(3000, () => {
 
 app.use("/server/student", studentRoutes);
 app.use("/server/studentauth", studentauthRoutes);
+app.use("/server/job", studentJobRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

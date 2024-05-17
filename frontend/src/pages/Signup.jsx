@@ -1,5 +1,5 @@
 import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Signup() {
@@ -7,9 +7,14 @@ export default function Signup() {
     const [errorMessage, setErrorMessage] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
+        setFormData({ 
+            ...formData, 
+            [e.target.id]: e.target.value.trim() 
+        });
     }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.name || !formData.email || !formData.password || !formData.studentID || !formData.dateOfBirth || !formData.address || !formData.contact) {
@@ -18,12 +23,18 @@ export default function Signup() {
         try {
             setLoading(true);
             setErrorMessage(null);
+
             const res = await fetch('/server/studentauth/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
+
+            
             const data = await res.json();
+
+            console.log(data);
+
             if (data.success === false) {
                 return setErrorMessage(data.message);
             }
@@ -115,9 +126,11 @@ export default function Signup() {
                             />
                         </div>
                         <Button
-                            gradientDuoTone='purpleToPink'
+                            
                             type='submit'
                             disabled={loading}
+                
+                            gradientDuoTone="purpleToPink"
                         >
                             {loading ? (
                                 <>
