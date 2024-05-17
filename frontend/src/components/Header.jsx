@@ -1,47 +1,52 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Navbar, TextInput, Button, Dropdown} from 'flowbite-react'
+import { Link, useLocation } from 'react-router-dom'
+import { AiOutlineSearch } from 'react-icons/ai'
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 export default function Header() {
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
+  const path = useLocation().pathname;
   return (
-    <nav id="navbar" className="navJS-code bg-[#e4f2ff] py-6 drop-shadow-xl">
+    <Navbar className='border-b-2'>
+      <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
+        <span className='px-2py-1  rounded-lg text-black'>Connect</span>
+        Alumni
+      </Link>
+      <Button className='w-12 h-10 lg:hidden' color='gray' pill>
+        <AiOutlineSearch />
+      </Button>
 
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        
-        <div className="text-4xl font-bold  text-blue-500 mb-4 md:mb-0 md:mr-6 font-grype">
-          Connect<span className="text-3xl font-semibold text-black">Alumni</span>
-        </div>
-
-        {/* Toggle button only appears on mobile view */}
-        <button
-          onClick={toggleMobileMenu}
-          className="block md:hidden focus:outline-none"
-        >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}/>
-          </svg>
-        </button>
-
-        {/* Menu items */}
-        <div className={`${isMobileMenuOpen ? "block" : "hidden"} flex flex-col md:flex md:min-h-fit left-[0] top-[-100%] md:w-auto  md:flex-row gap-[4vw] items-center text-lg`}>
-          <Link to="/home" className="nav-link text-black hover:text-black/70">Home</Link>
-          <Link to="/alumni" className="nav-link text-black hover:text-black/70">Alumni</Link>
-          <Link to="/jobs" className="nav-link text-black hover:text-black/70">Jobs</Link>
-          <Link to="/about" className="nav-link text-black hover:text-black/70">About</Link>
-          <Link to="/contactus" className="nav-link text-black hover:text-black/70">Contact Us</Link>
-        </div>
-
-        {/* Sign Up button */}
-        <Link to="/signup">
-          <button className="btn-signup bg-blue-500 hover:bg-blue-500/75 text-white px-4 py-2 rounded-md">Sign Up</button>
-        </Link>
-      </div>
-    </nav>
-  );
+      <Navbar.Collapse>
+        <Navbar.Link active={path === "/"} as={'div'}>
+          <Link to='/'>
+            Home
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/about"} as={'div'}>
+          <Link to='/about'>
+            About
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/gallery"} as={'div'}>
+          <Link to='/gallery'>
+            Gallery
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/jobs"} as={'div'}>
+          <Link to='/jobs'>
+            Jobs
+          </Link>
+        </Navbar.Link>
+        <Dropdown label="Login" dismissOnClick={false}>
+          <Dropdown.Item><Link to='/login'>Login as Student </Link></Dropdown.Item>
+          <Dropdown.Item><Link to='/login'>Login as Alumni </Link></Dropdown.Item>
+          <Dropdown.Item><Link to='/login'>Login as Admin </Link></Dropdown.Item>
+        </Dropdown>
+        <Dropdown label="Sign Up" dismissOnClick={false}>
+          <Dropdown.Item><Link to='/signup'>  Signup as Student </Link></Dropdown.Item>
+          <Dropdown.Item><Link to='/signup'>Signup as Alumni </Link></Dropdown.Item>
+        </Dropdown>
+      </Navbar.Collapse>
+    </Navbar>
+  )
 }

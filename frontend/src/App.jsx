@@ -6,6 +6,8 @@ import  Signup  from './pages/Signup.jsx';
 import { Contactus } from './pages/Contactus.jsx';
 import Header from './components/Header.jsx';
 import Jobs from './pages/Jobs.jsx';
+import Gallery from './pages/Gallery.jsx';
+import Footer from './components/Footer.jsx';
 
 
 export default function App() {
@@ -19,7 +21,9 @@ export default function App() {
           <Route path = "/about" element={<About/>}/>
           <Route path = "/jobs" element={<Jobs/>}/>
           <Route path = "/contactus" element={<Contactus/>}/>
+        <Route path="/gallery" element={<Gallery />} />
        </Routes>
+       <Footer/>
     </BrowserRouter>
   )
 }

@@ -130,7 +130,7 @@ export default function Signup() {
                             type='submit'
                             disabled={loading}
                 
-                            gradientDuoTone="purpleToPink"
+                            
                         >
                             {loading ? (
                                 <>
