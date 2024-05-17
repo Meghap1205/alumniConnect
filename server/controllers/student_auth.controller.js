@@ -1,5 +1,6 @@
 const User = require("../models/student.model.js");
 const bcryptjs = require("bcryptjs");
+const errorHandler = require("../utils/error.js");
 
 
 const signup = async (req, res, next) => {
