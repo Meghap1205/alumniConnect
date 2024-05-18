@@ -7,8 +7,7 @@ export default {
         grype: ['Grype', 'sans-serif'],
       },
       colors: {
-        'custom-blue-dark': '#3f83f8',
-        'custom-blue-light': '#e4f2ff', // Replace with your desired hex value
+        'custom-blue':"#0694A2",
       }
     },
   },
