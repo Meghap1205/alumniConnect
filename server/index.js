@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const path = require("path");
 const studentRoutes = require("./routes/student.routes.js");
 const studentauthRoutes = require("./routes/student_auth.routes.js");
 const studentJobRoutes =require("./routes/studentJobRoutes.js")
+const galleryRoutes = require("./routes/galleryRoutes.js");
 
 const cors = require("cors");
 
@@ -19,6 +21,9 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.use(express.static(path.join(__dirname, '../../client/public')));
+
 
 
 
@@ -38,6 +43,7 @@ app.listen(3000, () => {
 app.use("/server/student", studentRoutes);
 app.use("/server/studentauth", studentauthRoutes);
 app.use("/server/job", studentJobRoutes);
+app.use("/server/gallery", galleryRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
