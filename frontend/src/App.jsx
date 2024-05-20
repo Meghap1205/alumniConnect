@@ -11,6 +11,7 @@ import Footer from './components/Footer.jsx';
 import AdminLayout from './pages/AdminLayout.jsx';
 import AdminJobs from './pages/AdminJobs.jsx';
 import AdminDeleteJob from './pages/AdminDeleteJob.jsx';
+import GalleryUpload from './pages/GalleryUpload.jsx';
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="insertjobs" element={<AdminJobs />} />
           <Route path="deletejobs" element={<AdminDeleteJob />} />
+          <Route path="galleryupload" element={<GalleryUpload />} />
         </Route>
       </Routes>
       <Footer />
