@@ -22,9 +22,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(express.static(path.join(__dirname, '../../client/public')));
-
-
+app.use('/uploads', express.static(path.join(__dirname, '../frontend/public/uploads')));
 
 
 mongoose

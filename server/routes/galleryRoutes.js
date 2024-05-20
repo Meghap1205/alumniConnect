@@ -1,5 +1,5 @@
 const express = require("express");
-const { uploadPicture } = require("../controllers/galleryController");
+const { uploadPicture , displayPictures} = require("../controllers/galleryController");
 const multer = require("multer");
 const path = require("path"); // Import the path module
 
@@ -18,5 +18,6 @@ const upload = multer({ storage: storage });
 const router = express.Router();
 
 router.post("/upload", upload.single("image"), uploadPicture);
+router.get("/displaygallery", displayPictures);
 
 module.exports = router;
