@@ -1,14 +1,17 @@
-
-import { Navbar,  Button, Dropdown} from 'flowbite-react'
+import React from 'react'
+import { Navbar, Button, Dropdown, Avatar, DropdownHeader, DropdownDivider, DropdownItem } from 'flowbite-react'
 import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
+import { useSelector } from 'react-redux';
+
 
 export default function Header() {
   const path = useLocation().pathname;
+  const { currentstudent } = useSelector(state => state.student)
   return (
     <Navbar className='border-b-2'>
       <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
-        <span className='px-2py-1  rounded-lg text-black'>Connect</span>
+        <span className='px-2 py-1  rounded-lg text-black'>Connect</span>
         Alumni
       </Link>
       <Button className='w-12 h-10 lg:hidden' color='gray' pill>
@@ -46,15 +49,44 @@ export default function Header() {
             Contact us
           </Link>
         </Navbar.Link>
-        <Dropdown label="Login" dismissOnClick={false}>
-          <Dropdown.Item><Link to='/login'>Login as Student </Link></Dropdown.Item>
-          <Dropdown.Item><Link to='/login'>Login as Alumni </Link></Dropdown.Item>
-          <Dropdown.Item><Link to='/login'>Login as Admin </Link></Dropdown.Item>
-        </Dropdown>
-        <Dropdown label="Sign Up" dismissOnClick={false}>
-          <Dropdown.Item><Link to='/signup'>  Signup as Student </Link></Dropdown.Item>
-          <Dropdown.Item><Link to='/signup'>Signup as Alumni </Link></Dropdown.Item>
-        </Dropdown>
+        {currentstudent ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar
+                alt='user'
+                img={currentstudent.profilePicture}
+                rounded
+              />
+            }
+          >
+            <DropdownHeader>
+              <span className='block text-sm'>@{currentstudent.name}</span>
+              <span className='block text-sm font-medium truncate'>
+                {currentstudent.email}
+              </span>
+            </DropdownHeader>
+            <Link to={'/dashboard?tab=profile'}>
+              <Dropdown.Item>Profile</Dropdown.Item>
+            </Link>
+            <DropdownDivider />
+            <DropdownItem>Sign out</DropdownItem>
+          </Dropdown>
+        ) : (
+          <>
+            <Dropdown label="Login" dismissOnClick={false}>
+              <Dropdown.Item><Link to='/login'>Login as Student </Link></Dropdown.Item>
+              <Dropdown.Item><Link to='/login'>Login as Alumni </Link></Dropdown.Item>
+              <Dropdown.Item><Link to='/login'>Login as Admin </Link></Dropdown.Item>
+            </Dropdown>
+            <Dropdown label="Sign Up" dismissOnClick={false}>
+              <Dropdown.Item><Link to='/signup'>  Signup as Student </Link></Dropdown.Item>
+              <Dropdown.Item><Link to='/signup'>Signup as Alumni </Link></Dropdown.Item>
+            </Dropdown>
+          </>
+        )}
+
       </Navbar.Collapse>
     </Navbar>
   )
