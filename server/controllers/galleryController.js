@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 const Upload = require("../models/galleryModel");
 
 const uploadPicture = async (req, res) => {
@@ -32,4 +33,29 @@ const displayPictures = async (req,res)=> {
   }
 }
 
-module.exports = { uploadPicture , displayPictures};
+const deletepicture = async(req,res)=> {
+  try {
+    const picId= req.params.id;
+    const deletepic = await Upload.findByIdAndDelete(picId);
+
+    if (!deletepic) {
+      return res.status(404).json({ msg: "picture not found" });
+  }
+
+  // Delete the file from the filesystem
+  const imagePath = path.join(__dirname, '../../frontend/public', deletepic.imageUrl);
+  fs.unlink(imagePath, (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ msg: "Failed to delete picture file" });
+    }
+  });
+
+  return res.status(200).json({ msg: "picture deleted successfully" });
+  } catch (error) {
+    console.error(error);
+        return res.status(500).json({ msg: "Failed to delete pic" });
+  }
+}
+
+module.exports = { uploadPicture , displayPictures, deletepicture};

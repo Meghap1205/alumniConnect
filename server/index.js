@@ -6,6 +6,8 @@ const studentRoutes = require("./routes/student.routes.js");
 const studentauthRoutes = require("./routes/student_auth.routes.js");
 const studentJobRoutes =require("./routes/studentJobRoutes.js")
 const galleryRoutes = require("./routes/galleryRoutes.js");
+const eventRoutes = require("./routes/eventRoutes.js");
+const contactRoutes = require("./routes/contactRoutes.js");
 
 const cors = require("cors");
 
@@ -42,6 +44,8 @@ app.use("/server/student", studentRoutes);
 app.use("/server/studentauth", studentauthRoutes);
 app.use("/server/job", studentJobRoutes);
 app.use("/server/gallery", galleryRoutes);
+app.use("/server/event", eventRoutes);
+app.use ("/server/contact", contactRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

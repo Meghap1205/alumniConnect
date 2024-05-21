@@ -12,6 +12,12 @@ import AdminLayout from './pages/AdminLayout.jsx';
 import AdminJobs from './pages/AdminJobs.jsx';
 import AdminDeleteJob from './pages/AdminDeleteJob.jsx';
 import GalleryUpload from './pages/GalleryUpload.jsx';
+import AdminAddEvent from './pages/AdminAddEvent.jsx';
+import Event from './pages/Event.jsx';
+import AdminDeletePic from './pages/AdminDeletePic.jsx';
+import AdminDeleteEvent from './pages/AdminDeleteEvent.jsx'
+import Contact from './pages/Contact.jsx';
+import AdminContact from './pages/AdminContact.jsx';
 
 
 export default function App() {
@@ -24,12 +30,18 @@ export default function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
         <Route path="/jobs" element={<Jobs />} />
+        <Route path="/event" element={<Event />} />
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="insertjobs" element={<AdminJobs />} />
           <Route path="deletejobs" element={<AdminDeleteJob />} />
           <Route path="galleryupload" element={<GalleryUpload />} />
+          <Route path="deletepic" element={<AdminDeletePic />} />
+          <Route path="addevent" element={<AdminAddEvent />} />
+          <Route path="deleteevent" element={<AdminDeleteEvent />} />
+          <Route path="contact" element={<AdminContact />} />
         </Route>
       </Routes>
       <Footer />

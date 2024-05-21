@@ -1,8 +1,7 @@
-import React from 'react'
-import { Navbar, TextInput, Button, Dropdown} from 'flowbite-react'
+
+import { Navbar,  Button, Dropdown} from 'flowbite-react'
 import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
-import { FaMoon, FaSun } from 'react-icons/fa';
 
 export default function Header() {
   const path = useLocation().pathname;
@@ -35,6 +34,16 @@ export default function Header() {
         <Navbar.Link active={path === "/jobs"} as={'div'}>
           <Link to='/jobs'>
             Jobs
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/event"} as={'div'}>
+          <Link to='/event'>
+            Events
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/contact"} as={'div'}>
+          <Link to='/contact'>
+            Contact us
           </Link>
         </Navbar.Link>
         <Dropdown label="Login" dismissOnClick={false}>
