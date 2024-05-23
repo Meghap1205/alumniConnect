@@ -8,11 +8,12 @@ const studentJobRoutes =require("./routes/studentJobRoutes.js")
 const galleryRoutes = require("./routes/galleryRoutes.js");
 const eventRoutes = require("./routes/eventRoutes.js");
 const contactRoutes = require("./routes/contactRoutes.js");
-
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 dotenv.config();
 const app = express();
+app.use(cookieParser());
 
 app.use(express.json());
 

@@ -1,13 +1,31 @@
 import React from 'react'
-import { Navbar, Button, Dropdown, Avatar, DropdownHeader, DropdownDivider, DropdownItem } from 'flowbite-react'
+import { Navbar, TextInput, Button, Dropdown, Avatar, DropdownHeader, DropdownDivider, DropdownItem } from 'flowbite-react'
 import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
-import { useSelector } from 'react-redux';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { signoutSuccess } from '../redux/student/studentSlice';
 
 
 export default function Header() {
   const path = useLocation().pathname;
+  const dispatch = useDispatch();
   const { currentstudent } = useSelector(state => state.student)
+  const handleSignout = async () => {
+    try {
+      const res = await fetch('/server/student/signout', {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(signoutSuccess());
+      }
+    } catch (error) {
+
+    }
+  }
   return (
     <Navbar className='border-b-2'>
       <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
@@ -67,11 +85,11 @@ export default function Header() {
                 {currentstudent.email}
               </span>
             </DropdownHeader>
-            <Link to={'/dashboard?tab=profile'}>
+            <Link to={'/student-dashboard?tab=profile'}>
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
             <DropdownDivider />
-            <DropdownItem>Sign out</DropdownItem>
+            <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
           <>
