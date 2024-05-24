@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home } from './pages/Home_main.jsx';
-import { About } from './pages/About.jsx';
+import Home  from './pages/Home_main.jsx';
+import About  from './pages/About.jsx';
 import   Login   from './pages/Login.jsx';
 import  Signup  from './pages/Signup.jsx';
 import { Contactus } from './pages/Contactus.jsx';
@@ -20,6 +20,7 @@ import Contact from './pages/Contact.jsx';
 import AdminContact from './pages/AdminContact.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import Student_dashboard from './components/Student_dashboard.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 
 
@@ -49,6 +50,8 @@ export default function App() {
           <Route path="deleteevent" element={<AdminDeleteEvent />} />
           <Route path="contact" element={<AdminContact />} />
         </Route>
+
+        <Route path='/*' element={<NotFound/> }/>
       </Routes>
       <Footer />
     </BrowserRouter>
