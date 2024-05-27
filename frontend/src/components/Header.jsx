@@ -5,12 +5,16 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { signoutSuccess } from '../redux/student/studentSlice';
+import { toggleTheme } from '../redux/theme/themeSlice';
+
 
 
 export default function Header() {
   const path = useLocation().pathname;
   const dispatch = useDispatch();
   const { currentstudent } = useSelector(state => state.student)
+  const { theme } = useSelector((state) => state.theme);
+
   const handleSignout = async () => {
     try {
       const res = await fetch('/server/student/signout', {
@@ -67,6 +71,9 @@ export default function Header() {
             Contact us
           </Link>
         </Navbar.Link>
+        <Button className='w-12 h-10 hidden sm:inline' color='gray' pill onClick={() => dispatch(toggleTheme())}>
+          {theme === 'light' ? <FaSun /> : <FaMoon />}
+        </Button>
         {currentstudent ? (
           <Dropdown
             arrowIcon={false}

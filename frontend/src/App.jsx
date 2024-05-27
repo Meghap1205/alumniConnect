@@ -21,6 +21,7 @@ import AdminContact from './pages/AdminContact.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import Student_dashboard from './components/Student_dashboard.jsx';
 import NotFound from './pages/NotFound.jsx';
+import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute'
 
 
 
@@ -41,15 +42,18 @@ export default function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/Student-dashboard" element={<Student_dashboard />} />
         </Route>
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="insertjobs" element={<AdminJobs />} />
-          <Route path="deletejobs" element={<AdminDeleteJob />} />
-          <Route path="galleryupload" element={<GalleryUpload />} />
-          <Route path="deletepic" element={<AdminDeletePic />} />
-          <Route path="addevent" element={<AdminAddEvent />} />
-          <Route path="deleteevent" element={<AdminDeleteEvent />} />
-          <Route path="contact" element={<AdminContact />} />
+        <Route element={<OnlyAdminPrivateRoute />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="insertjobs" element={<AdminJobs />} />
+            <Route path="deletejobs" element={<AdminDeleteJob />} />
+            <Route path="galleryupload" element={<GalleryUpload />} />
+            <Route path="deletepic" element={<AdminDeletePic />} />
+            <Route path="addevent" element={<AdminAddEvent />} />
+            <Route path="deleteevent" element={<AdminDeleteEvent />} />
+            <Route path="contact" element={<AdminContact />} />
+          </Route>
         </Route>
+        
 
         <Route path='/*' element={<NotFound/> }/>
       </Routes>
