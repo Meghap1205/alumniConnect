@@ -1,19 +1,6 @@
 
-import { Alert, Button, Modal, ModalBody, TextInput } from 'flowbite-react'; 
-import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { getDownloadURL, getStorage, uploadBytesResumable, ref } from 'firebase/storage'
-import { app } from '../firebase'
-import { CircularProgressbar } from 'react-circular-progressbar'
-import 'react-circular-progressbar/dist/styles.css'
-import { updateFailure, updateStart, updateSuccess, deleteUserFailure, deleteUserSuccess, deleteUsserStart, signoutSuccess } from "../redux/student/studentSlice.js";
-import { useDispatch } from "react-redux";
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
-
-=======
-import { Alert, Button, Modal, ModalBody, TextInput } from 'flowbite-react'; 
-import React, { useEffect, useRef, useState } from "react";
->>>>>>> origin/amisha
+import { Alert, Button, Modal,TextInput } from 'flowbite-react'; 
+import  { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { getDownloadURL, getStorage, uploadBytesResumable, ref } from 'firebase/storage'
 import { app } from '../firebase'
@@ -70,6 +57,7 @@ export default function DashProfile() {
                 setImageFile(null);
                 setImageFileUrl(null);
                 setimageFileUploading(false);
+                console.log(error);
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
@@ -151,7 +139,7 @@ export default function DashProfile() {
                 dispatch(signoutSuccess());
             }
         } catch (error) {
-
+            console.log(error);
         }
     }
     return (
@@ -283,7 +271,7 @@ export default function DashProfile() {
                         </h3>
                         <div className='flex justify-center gap-4'>
                             <Button color='failure' onClick={handleDeleteUser}>
-                                Yes, I'm sure
+                                Yes, I am sure
                             </Button>
                             <Button color='gray' onClick={() => setShowModal(false)}>
                                 No, cancel
