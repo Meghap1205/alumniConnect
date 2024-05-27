@@ -6,8 +6,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { signoutSuccess } from '../redux/student/studentSlice'; 
 import { useDispatch } from 'react-redux';
+import { useSelector } from "react-redux";
+import { Alert, Button, Modal, ModalBody, TextInput } from 'flowbite-react'; 
+
 
 export default function DashSidebar() {
+    const { currentstudent, error, loading } = useSelector((state) => state.student);
     const location = useLocation();
     const dispatch = useDispatch();
     const [tab, setTab] = useState('');
@@ -43,6 +47,69 @@ export default function DashSidebar() {
                             Profile
                         </Sidebar.Item>
                     </Link>
+                    {
+                        currentstudent.isAdmin && (
+                            <Link to={'/admin/insertjobs'}>
+                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
+                                    Insert Job
+                                </Sidebar.Item>
+                            </Link>
+                        )
+                    }
+                    {
+                        currentstudent.isAdmin && (
+                            <Link to={'/admin/deletejobs'}>
+                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
+                                    Delete Job
+                                </Sidebar.Item>
+                            </Link>
+                        )
+                    }
+                    {
+                        currentstudent.isAdmin && (
+                            <Link to={'/admin/galleryupload'}>
+                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
+                                    Gallery Upload
+                                </Sidebar.Item>
+                            </Link>
+                        )
+                    }
+                    {
+                        currentstudent.isAdmin && (
+                            <Link to={'/admin/deletepic'}>
+                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
+                                    Delete Picture
+                                </Sidebar.Item>
+                            </Link>
+                        )
+                    }
+                    {
+                        currentstudent.isAdmin && (
+                            <Link to={'/admin/addevent'}>
+                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
+                                    Add Event
+                                </Sidebar.Item>
+                            </Link>
+                        )
+                    }
+                    {
+                        currentstudent.isAdmin && (
+                            <Link to={'/admin/deleteevent'}>
+                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
+                                    Delete Event
+                                </Sidebar.Item>
+                            </Link>
+                        )
+                    }
+                    {
+                        currentstudent.isAdmin && (
+                            <Link to={'/admin/contact'}>
+                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
+                                    Contact Admin
+                                </Sidebar.Item>
+                            </Link>
+                        )
+                    }
                     <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer' onClick={handleSignout}>
                         Sign Out
                     </Sidebar.Item>

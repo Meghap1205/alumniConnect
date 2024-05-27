@@ -1,5 +1,5 @@
 import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
-import { useState } from 'react'
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -10,12 +10,12 @@ import {
 
 export default function Login() {
     const [formData, setFormData] = useState({});
-    const { loading, error: errorMessage } = useSelector((state) => state.student);
-    const navigate = useNavigate();
+    const { error: errorMessage } = useSelector((state) => state.student);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
-    }
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.studentID || !formData.password) {
@@ -32,30 +32,30 @@ export default function Login() {
             if (data.success === false) {
                 dispatch(signInFailure(data.message));
             }
+
             if (res.ok) {
                 dispatch(signInSuccess(data));
                 navigate('/');
             }
-
         } catch (error) {
             dispatch(signInFailure(error.message));
         }
-    }
-
+    };
     return (
-
         <div className='min-h-screen mt-20'>
             <div className='flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5'>
+                
+                
+
                 <div className='flex-1'>
                     <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
                         <div>
-                            <Label value='Your studentID' />
+                            <Label value='Your StudentID' />
                             <TextInput
                                 type='text'
                                 placeholder='studentID'
                                 id='studentID'
                                 onChange={handleChange}
-
                             />
                         </div>
                         <div>
@@ -65,28 +65,19 @@ export default function Login() {
                                 placeholder='**********'
                                 id='password'
                                 onChange={handleChange}
-
                             />
                         </div>
                         <Button
-
+                        
                             type='submit'
-                            disabled={loading}
                         >
-                            {loading ? (
-                                <>
-                                    <Spinner size='sm' />
-                                    <span className='pl-3'>Loading...</span>
-                                </>
-                            ) : (
-                                'Login'
-                            )
-                            }
+                            Log In
                         </Button>
+        
                     </form>
                     <div className='flex gap-2 text-sm mt-5'>
-                        <span>Don't Have an account?</span>
-                        <Link to='/signup' className='text-blue-500' >
+                        <span>Dont Have an account?</span>
+                        <Link to='/signup' className='text-blue-500'>
                             Sign Up
                         </Link>
                     </div>
@@ -94,16 +85,9 @@ export default function Login() {
                         <Alert className='mt-5' color='failure'>
                             {errorMessage}
                         </Alert>
-                    )
-
-                    }
+                    )}
                 </div>
-
-
             </div>
         </div>
-
-
     );
 }
-

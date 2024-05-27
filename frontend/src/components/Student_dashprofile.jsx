@@ -1,6 +1,5 @@
-
-import { Alert, Button, Modal,TextInput } from 'flowbite-react'; 
-import  { useEffect, useRef, useState } from "react";
+import { Alert, Button, Modal, TextInput } from 'flowbite-react'; 
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { getDownloadURL, getStorage, uploadBytesResumable, ref } from 'firebase/storage'
 import { app } from '../firebase'
@@ -9,9 +8,11 @@ import 'react-circular-progressbar/dist/styles.css'
 import { updateFailure, updateStart, updateSuccess, deleteUserFailure, deleteUserSuccess, deleteUsserStart, signoutSuccess } from "../redux/student/studentSlice.js";
 import { useDispatch } from "react-redux";
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
+
 
 export default function DashProfile() {
-    const { currentstudent, error } = useSelector((state) => state.student);
+    const { currentstudent, error, loading } = useSelector((state) => state.student);
     const [imageFile, setImageFile] = useState(null);
     const [imageFileUrl, setImageFileUrl] = useState(null);
     const [imageFileUploadProgress, setimageFileUploadProgress] = useState(null);
@@ -227,9 +228,23 @@ export default function DashProfile() {
                     defaultValue={currentstudent.contact}
                     onChange={handleChange}
                 />
-                <Button type="submit" gradientDuoTone='purpleToBlue' outline>
-                    Update
+                <Button type="submit" gradientDuoTone='purpleToBlue' outline
+                    disabled={loading || imageFileUploading}
+                >
+                    {loading ? 'Loading...' : 'Update'}
                 </Button>
+                {
+                    currentstudent.isAdmin && (
+                        <Link to={'/admin/addevent'}>
+                            <Button
+                                type='button'
+                                gradientDuoTone='purpleToPink'
+                                className='w-full' >
+                                Create an Event
+                            </Button>
+                        </Link>
+                    )
+                }
             </form>
             <div className="text-red-500 flex justify-between mt-5">
                 <span className="cursor-pointer" onClick={() => setShowModal(true)}>Delete Account</span>
