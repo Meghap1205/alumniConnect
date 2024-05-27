@@ -4,15 +4,13 @@ import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import { signoutSuccess } from '../redux/student/studentSlice';
 import { toggleTheme } from '../redux/theme/themeSlice';
-
-
+import { signoutSuccess } from '../redux/student/studentSlice';
 
 export default function Header() {
   const path = useLocation().pathname;
   const dispatch = useDispatch();
-  const { currentstudent } = useSelector(state => state.student)
+  const { currentstudent } = useSelector(state => state.student);
   const { theme } = useSelector((state) => state.theme);
 
   const handleSignout = async () => {
@@ -27,49 +25,46 @@ export default function Header() {
         dispatch(signoutSuccess());
       }
     } catch (error) {
-
+      console.error(error);
     }
-  }
+  };
+
   return (
     <Navbar className='border-b-2'>
       <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
-        <span className='px-2 py-1  rounded-lg text-black'>Connect</span>
+        <span className='px-2 py-1 rounded-lg text-black'>Connect</span>
         Alumni
       </Link>
-      <Button className='w-12 h-10 lg:hidden' color='gray' pill>
+      <form>
+        <TextInput
+          type='text'
+          placeholder='Search...'
+          rightIcon={AiOutlineSearch}
+          className='hidden lg:inline'
+        />
+      </form>
+      <Button className='w-12 h-10 lg:hidden' color='gray' pill onClick={() => dispatch(toggleTheme)}>
         <AiOutlineSearch />
       </Button>
 
       <Navbar.Collapse>
         <Navbar.Link active={path === "/"} as={'div'}>
-          <Link to='/'>
-            Home
-          </Link>
+          <Link to='/'>Home</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/about"} as={'div'}>
-          <Link to='/about'>
-            About
-          </Link>
+          <Link to='/about'>About</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/gallery"} as={'div'}>
-          <Link to='/gallery'>
-            Gallery
-          </Link>
+          <Link to='/gallery'>Gallery</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/jobs"} as={'div'}>
-          <Link to='/jobs'>
-            Jobs
-          </Link>
+          <Link to='/jobs'>Jobs</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/event"} as={'div'}>
-          <Link to='/event'>
-            Events
-          </Link>
+          <Link to='/event'>Events</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/contact"} as={'div'}>
-          <Link to='/contact'>
-            Contact us
-          </Link>
+          <Link to='/contact'>Contact us</Link>
         </Navbar.Link>
         <Button className='w-12 h-10 hidden sm:inline' color='gray' pill onClick={() => dispatch(toggleTheme())}>
           {theme === 'light' ? <FaSun /> : <FaMoon />}
@@ -106,13 +101,12 @@ export default function Header() {
               <Dropdown.Item><Link to='/login'>Login as Admin </Link></Dropdown.Item>
             </Dropdown>
             <Dropdown label="Sign Up" dismissOnClick={false}>
-              <Dropdown.Item><Link to='/signup'>  Signup as Student </Link></Dropdown.Item>
+              <Dropdown.Item><Link to='/signup'>Signup as Student </Link></Dropdown.Item>
               <Dropdown.Item><Link to='/signup'>Signup as Alumni </Link></Dropdown.Item>
             </Dropdown>
           </>
         )}
-
       </Navbar.Collapse>
     </Navbar>
-  )
+  );
 }
