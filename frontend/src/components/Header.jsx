@@ -1,7 +1,7 @@
 
-import { Navbar, TextInput, Button, Dropdown, Avatar, DropdownHeader, DropdownDivider, DropdownItem } from 'flowbite-react'
-import { Link, useLocation } from 'react-router-dom'
-import { AiOutlineSearch } from 'react-icons/ai'
+import { Navbar, Button, Dropdown, Avatar, DropdownHeader, DropdownDivider } from 'flowbite-react';
+import { Link, useLocation } from 'react-router-dom';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice';
@@ -35,14 +35,7 @@ export default function Header() {
         <span className='px-2 py-1 rounded-lg text-black'>Connect</span>
         Alumni
       </Link>
-      <form>
-        <TextInput
-          type='text'
-          placeholder='Search...'
-          rightIcon={AiOutlineSearch}
-          className='hidden lg:inline'
-        />
-      </form>
+   
       <Button className='w-12 h-10 lg:hidden' color='gray' pill onClick={() => dispatch(toggleTheme)}>
         <AiOutlineSearch />
       </Button>
@@ -51,11 +44,8 @@ export default function Header() {
         <Navbar.Link active={path === "/"} as={'div'}>
           <Link to='/'>Home</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === "/about"} as={'div'}>
-          <Link to='/about'>About</Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/gallery"} as={'div'}>
-          <Link to='/gallery'>Gallery</Link>
+        <Navbar.Link active={path === "/officebearer"} as={'div'}>
+          <Link to='/officebearer'>Office Bearer</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/jobs"} as={'div'}>
           <Link to='/jobs'>Jobs</Link>
@@ -63,8 +53,14 @@ export default function Header() {
         <Navbar.Link active={path === "/event"} as={'div'}>
           <Link to='/event'>Events</Link>
         </Navbar.Link>
+        <Navbar.Link active={path === "/gallery"} as={'div'}>
+          <Link to='/gallery'>Gallery</Link>
+        </Navbar.Link>
         <Navbar.Link active={path === "/contact"} as={'div'}>
           <Link to='/contact'>Contact us</Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/about"} as={'div'}>
+          <Link to='/about'>About</Link>
         </Navbar.Link>
         <Button className='w-12 h-10 hidden sm:inline' color='gray' pill onClick={() => dispatch(toggleTheme())}>
           {theme === 'light' ? <FaSun /> : <FaMoon />}

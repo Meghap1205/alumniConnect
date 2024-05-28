@@ -21,8 +21,8 @@ import AdminContact from './pages/AdminContact.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import Student_dashboard from './components/Student_dashboard.jsx';
 import NotFound from './pages/NotFound.jsx';
-import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute'
-
+import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute';
+import DisplayAlumni from './pages/AlumniList.jsx';
 
 
 export default function App() {
@@ -39,6 +39,8 @@ export default function App() {
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/officebearer" element={<DisplayAlumni />} />
+        
         <Route element={<PrivateRoute />}>
           <Route path="/Student-dashboard" element={<Student_dashboard />} />
         </Route>

@@ -38,6 +38,10 @@ const alumniSchema = new mongoose.Schema({
         default:
             "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     },
+    graduationYear: {
+        type: Number,
+        require: true,
+    },
     jobTitle: {
         type: String,
         required: true,
@@ -53,6 +57,16 @@ const alumniSchema = new mongoose.Schema({
     role: {
         type: String,
         default: "",
+    },
+    linkedinUrl: {
+        type: String,
+        required: true,
+        validate: {
+            validator: function(value) {
+                return /^(https?\:\/\/)?(www\.)?linkedin\.com\/(in|pub|company)\/[a-zA-Z0-9_-]+$/.test(value);
+            },
+            message: props => `${props.value} is not a valid LinkedIn URL!`
+        }
     },
 
 });

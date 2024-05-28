@@ -14,8 +14,8 @@ const Home = () => {
 
         if (response.ok) {
           const data = await response.json();
-          // Display only the latest 3 to 4 jobs
-          setJobs(data.slice(0, 4));
+    
+          setJobs(data.slice(0, 3));
         } else {
           console.error('Failed to fetch jobs');
         }
@@ -28,7 +28,7 @@ const Home = () => {
         try {
           const response = await fetch('http://localhost:3000/server/event/displayevent');
           const result = await response.json();
-          // Display only the latest 2 events
+        
           setEvents(result.event.slice(0, 2));
         } catch (error) {
           console.error('Error fetching events:', error);
@@ -57,7 +57,7 @@ const Home = () => {
 
       {/* Latest Jobs Section */}
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-semibold mb-8 text-center">Latest Job Openings</h2>
+        <h2 className="text-3xl font-semibold mb-8 text-center  text-gray-800 ">Latest Job Openings</h2>
         {jobs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {jobs.map((job) => (
@@ -72,23 +72,23 @@ const Home = () => {
 
      {/* Latest Events Section */}
      <div className="min-h-screen mt-20 p-5">
-     <h2 className="text-3xl font-semibold mb-8 text-center">Upcoming Events</h2>
+     <h2 className="text-3xl font-semibold mb-8 text-center  text-gray-800">Upcoming Events</h2>
      {events.length > 0 ? (
         <ul className="space-y-4">
           {events.map((event) => (
             <li key={event._id}>
               <div className="bg-white border-2 rounded-lg p-6 mb-4 border-custom-blue">
-                <div className="flex flex-row">
+              <div className="flex flex-row">
                   <div className="w-1/4 flex flex-col items-center justify-center bg-gray-100 p-3">
-                    <p className="text-xl font-semibold">{new Date(event.date).toLocaleString('en-US', { month: 'long', day: 'numeric' })}</p>
+                    <p className="text-xl font-semibold text-gray-800 mb-2">{new Date(event.date).toLocaleString('en-US', { month: 'long', day: 'numeric' })}</p>
                     <p className="text-gray-700">{event.location}</p>
                   </div>
                   <div className="w-3/4 pl-5">
-                    <h2 className="text-xl font-semibold">{event.eventName}</h2>
-                    <p><span className="font-bold">Time:</span> {event.time}</p>
-                    <p><span className="font-bold">Organized By:</span> {event.organizedBy}</p>
-                    <p><span className="font-bold">Contact Number:</span> {event.contactNo}</p>
-                    <p><span className="font-bold">Description:</span> {event.description}</p>
+                    <h2 className="text-xl font-semibold text-gray-800 mb-2">{event.eventName}</h2>
+                    <p className="text-gray-600 mb-2">Time: {event.time}</p>
+                    <p className="text-gray-600 mb-2">Organized By: {event.organizedBy}</p>
+                    <p className="text-gray-600 mb-2">Contact Number: {event.contactNo}</p>
+                    <p className="text-gray-600 mb-2">Description: {event.description}</p>
                   </div>
                 </div>
               </div>

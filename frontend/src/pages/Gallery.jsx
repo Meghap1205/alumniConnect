@@ -27,7 +27,7 @@ const GalleryDisplay = () => {
               alt={picture.description}
               className="w-full h-64 object-cover rounded-md"
             />
-            <p className="mt-2 text-center">{picture.description}</p>
+            <p className="text-gray-600 mb-2">{picture.description}</p>
           </div>
         ))}
       </div>
