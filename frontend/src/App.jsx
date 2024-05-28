@@ -22,6 +22,9 @@ import PrivateRoute from './components/PrivateRoute.jsx';
 import Student_dashboard from './components/Student_dashboard.jsx';
 import NotFound from './pages/NotFound.jsx';
 import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute'
+import AlumniSignup from './pages/AlumniSignup.jsx';
+import AlumniLogin from './pages/AlumniLogin.jsx';
+
 
 
 
@@ -32,7 +35,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/alumni-login" element={< AlumniLogin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/alumni-signup" element={< AlumniSignup />} />
         <Route path="/about" element={<About />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/event" element={<Event />} />

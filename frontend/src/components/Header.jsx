@@ -97,12 +97,11 @@ export default function Header() {
           <>
             <Dropdown label="Login" dismissOnClick={false}>
               <Dropdown.Item><Link to='/login'>Login as Student </Link></Dropdown.Item>
-              <Dropdown.Item><Link to='/login'>Login as Alumni </Link></Dropdown.Item>
-              <Dropdown.Item><Link to='/login'>Login as Admin </Link></Dropdown.Item>
+              <Dropdown.Item><Link to='/alumni-login'>Login as Alumni </Link></Dropdown.Item>
             </Dropdown>
             <Dropdown label="Sign Up" dismissOnClick={false}>
               <Dropdown.Item><Link to='/signup'>Signup as Student </Link></Dropdown.Item>
-              <Dropdown.Item><Link to='/signup'>Signup as Alumni </Link></Dropdown.Item>
+              <Dropdown.Item><Link to='/alumni-signup'>Signup as Alumni </Link></Dropdown.Item>
             </Dropdown>
           </>
         )}
