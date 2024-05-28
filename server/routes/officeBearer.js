@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getAllAlumni } = require('../controllers/officeBearerController');
+const { getAllAlumni, getAlumniByCompany } = require('../controllers/officeBearerController');
 
 router.get('/', getAllAlumni);
+router.get('/:companyname', getAlumniByCompany);
 
 module.exports = router;

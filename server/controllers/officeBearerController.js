@@ -9,4 +9,15 @@ const getAllAlumni = async (req, res) => {
   }
 };
 
-module.exports = {getAllAlumni};
+const getAlumniByCompany = async (req, res) => {
+  try {
+    const { companyname } = req.params;
+    const data = await Alumni.find({ company: companyname });
+    res.status(200).json({ alumni: data });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+module.exports = {getAllAlumni, getAlumniByCompany};

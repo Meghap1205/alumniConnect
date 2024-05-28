@@ -1,7 +1,6 @@
 
 import { Navbar, Button, Dropdown, Avatar, DropdownHeader, DropdownDivider } from 'flowbite-react';
 import { Link, useLocation } from 'react-router-dom';
-import { AiOutlineSearch } from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice';
@@ -36,9 +35,7 @@ export default function Header() {
         Alumni
       </Link>
    
-      <Button className='w-12 h-10 lg:hidden' color='gray' pill onClick={() => dispatch(toggleTheme)}>
-        <AiOutlineSearch />
-      </Button>
+      
 
       <Navbar.Collapse>
         <Navbar.Link active={path === "/"} as={'div'}>

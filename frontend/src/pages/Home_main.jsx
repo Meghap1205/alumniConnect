@@ -40,7 +40,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen">
       <div className="relative h-[500px] md:h-[700px]">
         <img
           src="home2.jpg"
@@ -57,7 +57,7 @@ const Home = () => {
 
       {/* Latest Jobs Section */}
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-semibold mb-8 text-center  text-gray-800 ">Latest Job Openings</h2>
+        <h2 className="text-3xl font-semibold mb-8 text-center  text-gray-500 ">Latest Job Openings</h2>
         {jobs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {jobs.map((job) => (
@@ -72,7 +72,7 @@ const Home = () => {
 
      {/* Latest Events Section */}
      <div className="min-h-screen mt-20 p-5">
-     <h2 className="text-3xl font-semibold mb-8 text-center  text-gray-800">Upcoming Events</h2>
+     <h2 className="text-3xl font-semibold mb-8 text-center  text-gray-500">Upcoming Events</h2>
      {events.length > 0 ? (
         <ul className="space-y-4">
           {events.map((event) => (

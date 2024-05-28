@@ -23,6 +23,7 @@ import Student_dashboard from './components/Student_dashboard.jsx';
 import NotFound from './pages/NotFound.jsx';
 import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute';
 import DisplayAlumni from './pages/AlumniList.jsx';
+import FetchAlumni from './pages/JobAlumni.jsx';
 
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
         <Route path="/jobs" element={<Jobs />} />
+        <Route path="/officebearer/:companyname" element={<FetchAlumni />} />
         <Route path="/event" element={<Event />} />
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/gallery" element={<Gallery />} />
