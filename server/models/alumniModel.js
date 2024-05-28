@@ -19,14 +19,6 @@ const alumniSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    dateOfBirth: {
-        type: Date,
-        required: true,
-    },
-    address: {
-        type: String,
-        required: true,
-    },
     contact: {
         type: Number,
         required: true,
@@ -55,7 +47,7 @@ const alumniSchema = new mongoose.Schema({
         required: true,
     },
     startDate: {
-        type: Date,
+        type: String,
         required: true,
     },
     role: {

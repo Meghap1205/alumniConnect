@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const studentRoutes = require("./routes/student.routes.js");
 const studentauthRoutes = require("./routes/student_auth.routes.js");
+const alumniauthRoutes = require("./routes/alumni_authRoutes.js");
 const studentJobRoutes =require("./routes/studentJobRoutes.js")
 const galleryRoutes = require("./routes/galleryRoutes.js");
 const eventRoutes = require("./routes/eventRoutes.js");
@@ -43,6 +44,7 @@ app.listen(3000, () => {
 
 app.use("/server/student", studentRoutes);
 app.use("/server/studentauth", studentauthRoutes);
+app.use("/server/alumniauth", alumniauthRoutes);
 app.use("/server/job", studentJobRoutes);
 app.use("/server/gallery", galleryRoutes);
 app.use("/server/event", eventRoutes);
