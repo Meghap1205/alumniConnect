@@ -42,10 +42,10 @@ const ContactList = () => {
             <li key={contact._id} className="bg-white border-2 rounded-lg p-6 mb-4 border-custom-blue">
               <div className="flex justify-between items-center">
                 <div>
-                  <h2 className="text-xl font-semibold">{contact.name}</h2>
-                  <p>Email: {contact.email}</p>
-                  <p>Phone: {contact.phoneNo}</p>
-                  <p>Issue: {contact.issueDescription}</p>
+                  <h2 className="text-xl font-semibold text-gray-800 mb-2">{contact.name}</h2>
+                  <p className="text-gray-600 mb-2">Email: {contact.email}</p>
+                  <p className="text-gray-600 mb-2">Phone: {contact.phoneNo}</p>
+                  <p className="text-gray-600 mb-2">Issue: {contact.issueDescription}</p>
                 </div>
                 <button
                   onClick={() => handleDelete(contact._id)}

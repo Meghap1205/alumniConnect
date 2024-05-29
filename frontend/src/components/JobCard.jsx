@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { FaUserFriends } from 'react-icons/fa'; 
+import { FaUserFriends, FaExternalLinkAlt } from 'react-icons/fa'; 
 
 const JobCard = ({ job }) => {
   const navigate = useNavigate();
@@ -28,7 +28,12 @@ const JobCard = ({ job }) => {
         style={{ fontSize: '24px' }}
         onClick={handleViewAlumniClick}
       />
-   
+      
+      {job.websiteUrl && (
+        <a href={job.websiteUrl} target="_blank" rel="noopener noreferrer" className="absolute top-2 right-2 cursor-pointer">
+          <FaExternalLinkAlt className="text-custom-blue" style={{ fontSize: '24px' }} />
+        </a>
+      )}
     </div>
   );
 };

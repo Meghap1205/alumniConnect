@@ -29,7 +29,10 @@ const jobSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    
+    websiteUrl: {
+        type: String, 
+        default: null,
+    },
 });
 
 const job = mongoose.model("job", jobSchema);
