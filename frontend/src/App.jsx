@@ -32,7 +32,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/alumni-login" element={< AlumniLogin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/alumni-signup" element={< AlumniSignup />} />
         <Route path="/about" element={<About />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/officebearer/:companyname" element={<FetchAlumni />} />
