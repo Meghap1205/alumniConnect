@@ -17,7 +17,7 @@ export default function alumniSignup() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!formData.name || !formData.email || !formData.password || !formData.alumniID || !formData.contact || !formData.company || !formData.startDate || !formData.role || !formData.linkedinUrl) {
+        if (!formData.name || !formData.email || !formData.password || !formData.alumniID || !formData.contact || !formData.company || !formData.startDate || !formData.role || !formData.linkedinUrl || !formData.graduationYear) {
             return setErrorMessage('Please fill out all fields.');
         }
         try {
@@ -101,6 +101,16 @@ export default function alumniSignup() {
                                 type='number'
                                 placeholder='contact'
                                 id='contact'
+                                onChange={handleChange}
+
+                            />
+                        </div>
+                        <div>
+                            <Label value='your graduation Year' />
+                            <TextInput
+                                type='number'
+                                placeholder='graduationYear'
+                                id='graduationYear'
                                 onChange={handleChange}
 
                             />
