@@ -48,7 +48,7 @@ app.use("/server/student", studentRoutes);
 app.use("/server/studentauth", studentauthRoutes);
 app.use("/server/alumniauth", alumniauthRoutes);
 app.use("/server/job", studentJobRoutes);
-app.use("/server/gallery", galleryRoutes);
+app.use("/server/post", galleryRoutes);
 app.use("/server/event", eventRoutes);
 app.use ("/server/contact", contactRoutes);
 app.use("/server/officebearer", officeBearerRoutes);

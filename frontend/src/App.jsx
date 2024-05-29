@@ -6,12 +6,10 @@ import  Signup  from './pages/Signup.jsx';
 import { Contactus } from './pages/Contactus.jsx';
 import Header from './components/Header.jsx';
 import Jobs from './pages/Jobs.jsx';
-import Gallery from './pages/Gallery.jsx';
 import Footer from './components/Footer.jsx';
 import AdminLayout from './pages/AdminLayout.jsx';
 import AdminJobs from './pages/AdminJobs.jsx';
 import AdminDeleteJob from './pages/AdminDeleteJob.jsx';
-import GalleryUpload from './pages/GalleryUpload.jsx';
 import AdminAddEvent from './pages/AdminAddEvent.jsx';
 import Event from './pages/Event.jsx';
 import AdminDeletePic from './pages/AdminDeletePic.jsx';
@@ -24,8 +22,10 @@ import NotFound from './pages/NotFound.jsx';
 import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute';
 import DisplayAlumni from './pages/AlumniList.jsx';
 import FetchAlumni from './pages/JobAlumni.jsx';
-import AlumniSignup from './pages/AlumniSignup.jsx';
+import CreateGallery from './pages/CreateGallery.jsx';
 import AlumniLogin from './pages/AlumniLogin.jsx';
+import AlumniSignup from './pages/AlumniSignup.jsx';
+
 
 
 export default function App() {
@@ -43,9 +43,9 @@ export default function App() {
         <Route path="/officebearer/:companyname" element={<FetchAlumni />} />
         <Route path="/event" element={<Event />} />
         <Route path="/contactus" element={<Contactus />} />
-        <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/officebearer" element={<DisplayAlumni />} />
+        
         
         <Route element={<PrivateRoute />}>
           <Route path="/Student-dashboard" element={<Student_dashboard />} />
@@ -54,7 +54,7 @@ export default function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="insertjobs" element={<AdminJobs />} />
             <Route path="deletejobs" element={<AdminDeleteJob />} />
-            <Route path="galleryupload" element={<GalleryUpload />} />
+            <Route path="create-post" element={<CreateGallery/>} />
             <Route path="deletepic" element={<AdminDeletePic />} />
             <Route path="addevent" element={<AdminAddEvent />} />
             <Route path="deleteevent" element={<AdminDeleteEvent />} />

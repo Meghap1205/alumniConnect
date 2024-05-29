@@ -4,13 +4,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        grype: ['Grype', 'sans-serif'],
+        grype: ["Grype", "sans-serif"],
       },
       colors: {
-        'custom-blue':"#0694A2",
-      }
+        "custom-blue": "#0694A2",
+      },
     },
   },
 
-  plugins: [flowbite.plugin(),],
+  plugins: [flowbite.plugin(), require("tailwind-scrollbar")],
 };
