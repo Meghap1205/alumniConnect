@@ -1,6 +1,6 @@
 
 import { Sidebar } from 'flowbite-react';
-import { HiUser, HiArrowSmRight } from 'react-icons/hi'
+import { HiUser, HiArrowSmRight, HiDocumentText } from 'react-icons/hi'
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -66,23 +66,18 @@ export default function DashSidebar() {
                         )
                     }
                     {
-                        currentstudent.isAdmin && (
-                            <Link to={'/admin/galleryupload'}>
-                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
-                                    Gallery Upload
-                                </Sidebar.Item>
-                            </Link>
-                        )
+                        
+                            currentstudent.isAdmin && (
+                            <Link to='/Student-dashboard?tab=posts' >
+                                    <Sidebar.Item active={tab === 'posts'} icon={HiDocumentText} as='div'>
+                                        Gallery
+                                    </Sidebar.Item>
+
+                                </Link>
+                            )
+                        
                     }
-                    {
-                        currentstudent.isAdmin && (
-                            <Link to={'/admin/deletepic'}>
-                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
-                                    Delete Picture
-                                </Sidebar.Item>
-                            </Link>
-                        )
-                    }
+                    
                     {
                         currentstudent.isAdmin && (
                             <Link to={'/admin/addevent'}>

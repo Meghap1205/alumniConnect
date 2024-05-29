@@ -30,6 +30,7 @@ const jobSchema = new mongoose.Schema({
         default: Date.now,
     },
     
+    
 });
 
 const job = mongoose.model("job", jobSchema);

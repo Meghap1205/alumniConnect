@@ -34,7 +34,7 @@ const EventForm = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Event added successfully:', data);
-        
+
         setFormData({
           eventName: '',
           date: '',

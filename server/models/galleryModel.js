@@ -1,20 +1,34 @@
 const mongoose = require("mongoose");
 
-const uploadSchema = new mongoose.Schema({
-  description: {
-    type: String,
-    required: true,
+const postSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    image: {
+      type: String,
+      default:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw4KSH-qaNpZzEfphp3wkOiiurV_nfVMLjwhBW2GCpFw&s",
+    },
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
+    },
   },
-  imageUrl: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  { timestamps: true }
+);
 
-const Upload = mongoose.model("Upload", uploadSchema);
+const Post = mongoose.model("Post", postSchema);
 
-module.exports = Upload;
+module.exports = Post;

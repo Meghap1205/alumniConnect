@@ -1,24 +1,8 @@
 const express = require("express");
-const { uploadPicture , displayPictures, deletepicture} = require("../controllers/galleryController");
-const multer = require("multer");
-const path = require("path"); // Import the path module
-
-// Set up multer for file uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../../frontend/public/uploads')); 
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
-
-const upload = multer({ storage: storage });
-
+const { verifyToken } = require("../utils/verifyStudent.js");
+const { create, getposts } = require("../controllers/gallery.controller.js");
 const router = express.Router();
 
-router.post("/upload", upload.single("image"), uploadPicture);
-router.get("/displaygallery", displayPictures);
-router.delete("/deletepicture/:id", deletepicture);
-
+router.post("/create", verifyToken, create);
+router.get("/getposts", getposts);
 module.exports = router;
