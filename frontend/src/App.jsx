@@ -23,6 +23,8 @@ import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute';
 import DisplayAlumni from './pages/AlumniList.jsx';
 import FetchAlumni from './pages/JobAlumni.jsx';
 import CreateGallery from './pages/CreateGallery.jsx';
+import AlumniLogin from './pages/AlumniLogin.jsx';
+import AlumniSignup from './pages/AlumniSignup.jsx';
 
 
 export default function App() {
