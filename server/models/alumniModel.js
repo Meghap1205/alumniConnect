@@ -40,11 +40,6 @@ const alumniSchema = new mongoose.Schema({
     },
     graduationYear: {
         type: Number,
-        require: true,
-    },
-    jobTitle: {
-        type: String,
-        required: true,
     },
     company: {
         type: String,

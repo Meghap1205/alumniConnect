@@ -10,10 +10,10 @@ const alumniSignup = async (req, res, next) => {
     password,
     alumniID,
     contact,
-    jobTitle,
     company,
     startDate,
     role,
+    linkedinUrl,
   } = req.body;
 
   if (
@@ -22,19 +22,19 @@ const alumniSignup = async (req, res, next) => {
     !password ||
     !alumniID ||
     !contact ||
-    !jobTitle ||
     !company ||
     !startDate ||
     !role ||
+    !linkedinUrl ||
     name === "" ||
     email === "" ||
     password === "" ||
     alumniID === "" ||
     contact === "" ||
-    jobTitle === "" ||
     company === "" ||
     startDate === "" ||
-    role === "" 
+    role === "" ||
+    linkedinUrl === ""
   ) {
     next(errorHandler(400, "All fields are required"));
   }
@@ -50,10 +50,10 @@ const alumniSignup = async (req, res, next) => {
     password: hashedPassword,
     alumniID,
     contact,
-    jobTitle,
     company,
     startDate,
     role,
+    linkedinUrl
   });
 
   try {

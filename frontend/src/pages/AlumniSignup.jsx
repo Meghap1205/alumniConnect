@@ -17,7 +17,7 @@ export default function alumniSignup() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!formData.name || !formData.email || !formData.password || !formData.alumniID || !formData.contact || !formData.jobTitle || !formData.company || !formData.startDate || !formData.role) {
+        if (!formData.name || !formData.email || !formData.password || !formData.alumniID || !formData.contact || !formData.company || !formData.startDate || !formData.role || !formData.linkedinUrl) {
             return setErrorMessage('Please fill out all fields.');
         }
         try {
@@ -105,16 +105,7 @@ export default function alumniSignup() {
 
                             />
                         </div>
-                        <div>
-                            <Label value='Your jobTitle' />
-                            <TextInput
-                                type='text'
-                                placeholder='jobTitle'
-                                id='jobTitle'
-                                onChange={handleChange}
-
-                            />
-                        </div>
+                        
                         <div>
                             <Label value='Your company' />
                             <TextInput
@@ -128,7 +119,7 @@ export default function alumniSignup() {
                         <div>
                             <Label value='Your startDate' />
                             <TextInput
-                                type='text'
+                                type='date'
                                 placeholder='startDate'
                                 id='startDate'
                                 onChange={handleChange}
@@ -141,6 +132,16 @@ export default function alumniSignup() {
                                 type='text'
                                 placeholder='role'
                                 id='role'
+                                onChange={handleChange}
+
+                            />
+                        </div>
+                        <div>
+                            <Label value='Your Linkedin URL' />
+                            <TextInput
+                                type='text'
+                                placeholder='linkedinUrl'
+                                id='linkedinUrl'
                                 onChange={handleChange}
 
                             />
