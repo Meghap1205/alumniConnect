@@ -9,7 +9,7 @@ const studentJobRoutes =require("./routes/studentJobRoutes.js")
 const galleryRoutes = require("./routes/galleryRoutes.js");
 const eventRoutes = require("./routes/eventRoutes.js");
 const contactRoutes = require("./routes/contactRoutes.js");
-const userRoutes = require("./routes/userRoutes.js");
+
 const officeBearerRoutes = require("./routes/officeBearer.js");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -52,7 +52,7 @@ app.use("/server/post", galleryRoutes);
 app.use("/server/event", eventRoutes);
 app.use ("/server/contact", contactRoutes);
 app.use("/server/officebearer", officeBearerRoutes);
-app.use("/server/user", userRoutes);
+
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

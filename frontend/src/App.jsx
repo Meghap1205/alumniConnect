@@ -23,6 +23,7 @@ import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute';
 import DisplayAlumni from './pages/AlumniList.jsx';
 import FetchAlumni from './pages/JobAlumni.jsx';
 import CreateGallery from './pages/CreateGallery.jsx';
+import UpdateGallery from './pages/UpdateGallery.jsx';
 import AlumniLogin from './pages/AlumniLogin.jsx';
 import AlumniSignup from './pages/AlumniSignup.jsx';
 
@@ -54,7 +55,8 @@ export default function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="insertjobs" element={<AdminJobs />} />
             <Route path="deletejobs" element={<AdminDeleteJob />} />
-            <Route path="create-post" element={<CreateGallery/>} />
+            <Route path="create-post" element={<CreateGallery />} />
+            <Route path="update-post/:postId" element={<UpdateGallery />} />
             <Route path="deletepic" element={<AdminDeletePic />} />
             <Route path="addevent" element={<AdminAddEvent />} />
             <Route path="deleteevent" element={<AdminDeleteEvent />} />
