@@ -25,4 +25,5 @@ const AlumniCard = ({ alumnus }) => {
   );
 };
 
+
 export default AlumniCard;

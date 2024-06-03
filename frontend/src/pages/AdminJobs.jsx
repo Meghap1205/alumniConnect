@@ -8,8 +8,9 @@ const AdminJobs = () => {
     role: '',
     requireskills: '',
     coursespecialization: '',
+    websiteUrl: '',
     description: '',
-    createdAt: '',
+    createdAt: ''
   });
 
   const handleChange = (e) => {
@@ -41,8 +42,10 @@ const AdminJobs = () => {
           role: '',
           requireskills: '',
           coursespecialization: '',
+          websiteUrl: '',
           description: '',
-          createdAt: '',
+          createdAt: ''
+
         });
       } else {
         console.error('Failed to insert job:', await response.text());
@@ -108,6 +111,16 @@ const AdminJobs = () => {
                 placeholder='Course Specialization'
                 id='coursespecialization'
                 value={formData.coursespecialization}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <Label htmlFor='websiteUrl' value='Website URL' />
+              <Textarea
+                placeholder='Website URL'
+                id='websiteUrl'
+                value={formData.websiteUrl}
                 onChange={handleChange}
                 required
               />
