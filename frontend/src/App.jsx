@@ -9,7 +9,6 @@ import Jobs from './pages/Jobs.jsx';
 import Footer from './components/Footer.jsx';
 import AdminLayout from './pages/AdminLayout.jsx';
 import AdminJobs from './pages/AdminJobs.jsx';
-import AdminDeleteJob from './pages/AdminDeleteJob.jsx';
 import AdminAddEvent from './pages/AdminAddEvent.jsx';
 import Event from './pages/Event.jsx';
 import AdminDeletePic from './pages/AdminDeletePic.jsx';
@@ -49,17 +48,14 @@ export default function App() {
         
         
         <Route element={<PrivateRoute />}>
-          <Route path="/Student-dashboard" element={<Student_dashboard />} />
+          <Route path="/dashboard" element={<Student_dashboard />} />
         </Route>
         <Route element={<OnlyAdminPrivateRoute />}>
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="insertjobs" element={<AdminJobs />} />
-            <Route path="deletejobs" element={<AdminDeleteJob />} />
             <Route path="create-post" element={<CreateGallery />} />
             <Route path="update-post/:postId" element={<UpdateGallery />} />
-            <Route path="deletepic" element={<AdminDeletePic />} />
             <Route path="addevent" element={<AdminAddEvent />} />
-            <Route path="deleteevent" element={<AdminDeleteEvent />} />
             <Route path="contact" element={<AdminContact />} />
           </Route>
         </Route>

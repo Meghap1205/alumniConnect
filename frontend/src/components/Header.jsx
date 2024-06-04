@@ -29,7 +29,7 @@ export default function Header() {
   };
 
   return (
-    <Navbar className='border-b-2'>
+    <Navbar className='border-b-2 '>
       <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
         <span className='px-2 py-1 rounded-lg text-black'>Connect</span>
         Alumni
@@ -37,9 +37,9 @@ export default function Header() {
    
       
 
-      <Navbar.Collapse>
+      <Navbar.Collapse >
         <Navbar.Link active={path === "/"} as={'div'}>
-          <Link to='/'>Home</Link>
+          <Link to='/' >Home</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/officebearer"} as={'div'}>
           <Link to='/officebearer'>Office Bearer</Link>
@@ -80,7 +80,7 @@ export default function Header() {
                 {currentstudent.email}
               </span>
             </DropdownHeader>
-            <Link to={'/student-dashboard?tab=profile'}>
+            <Link to={'/dashboard?tab=profile'}>
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
             <DropdownDivider />

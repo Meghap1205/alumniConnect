@@ -1,6 +1,9 @@
 
 import { Sidebar } from 'flowbite-react';
 import { HiUser, HiArrowSmRight, HiDocumentText, HiOutlineUserGroup } from 'react-icons/hi'
+import { FaUpload } from 'react-icons/fa';
+import { MdWork } from "react-icons/md";
+import { MdEventAvailable } from "react-icons/md";
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -42,33 +45,35 @@ export default function DashSidebar() {
         <Sidebar className='w-full md:w-56'>
             <Sidebar.Items>
                 <Sidebar.ItemGroup>
-                    <Link to='/Student-dashboard?tab=profile' >
-                        <Sidebar.Item active={tab === 'profile'} icon={HiUser} label={'Student'} labelColor='dark' as='div'>
+                    <Link to='/dashboard?tab=profile' >
+                        <Sidebar.Item active={tab === 'profile'} icon={HiUser} label={currentstudent.isAdmin ? 'Admin' : 'Student'} labelColor='dark' as='div'>
                             Profile
                         </Sidebar.Item>
                     </Link>
                     {
                         currentstudent.isAdmin && (
-                            <Link to={'/admin/insertjobs'}>
-                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
-                                    Insert Job
+                            <Link to='/dashboard?tab=jobs' >
+                                <Sidebar.Item active={tab === 'jobs'} icon={MdWork} as='div'>
+                                    Jobs
                                 </Sidebar.Item>
+
                             </Link>
                         )
                     }
                     {
                         currentstudent.isAdmin && (
-                            <Link to={'/admin/deletejobs'}>
-                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
-                                    Delete Job
+                            <Link to={'/admin/insertjobs'}>
+                                <Sidebar.Item icon={FaUpload} className='cursor-pointer'>
+                                    Upload Job
                                 </Sidebar.Item>
                             </Link>
                         )
                     }
+                  
                     {
                         
                             currentstudent.isAdmin && (
-                            <Link to='/Student-dashboard?tab=posts' >
+                            <Link to='/dashboard?tab=posts' >
                                     <Sidebar.Item active={tab === 'posts'} icon={HiDocumentText} as='div'>
                                         Gallery
                                     </Sidebar.Item>
@@ -78,8 +83,20 @@ export default function DashSidebar() {
                         
                     }
                     {
+
                         currentstudent.isAdmin && (
-                            <Link to='/Student-dashboard?tab=users' >
+                            <Link to='/admin/create-post' >
+                                <Sidebar.Item  icon={FaUpload} as='div'>
+                                    Upload Gallery
+                                </Sidebar.Item>
+
+                            </Link>
+                        )
+
+                    }
+                    {
+                        currentstudent.isAdmin && (
+                            <Link to='/dashboard?tab=users' >
                                 <Sidebar.Item active={tab === 'users'} icon={HiOutlineUserGroup} as='div'>
                                     Students
                                 </Sidebar.Item>
@@ -91,17 +108,18 @@ export default function DashSidebar() {
                     {
                         currentstudent.isAdmin && (
                             <Link to={'/admin/addevent'}>
-                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
-                                    Add Event
+                                <Sidebar.Item active={tab === 'events'}
+                                icon={FaUpload} className='cursor-pointer'>
+                                    Upload Event
                                 </Sidebar.Item>
                             </Link>
                         )
                     }
                     {
                         currentstudent.isAdmin && (
-                            <Link to={'/admin/deleteevent'}>
-                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
-                                    Delete Event
+                            <Link to={'/dashboard?tab=events'}>
+                                <Sidebar.Item icon={MdEventAvailable} className='cursor-pointer'>
+                                    Events
                                 </Sidebar.Item>
                             </Link>
                         )

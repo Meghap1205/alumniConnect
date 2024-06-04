@@ -102,7 +102,7 @@ export default function UpdatePost() {
 
             if (res.ok) {
                 setPublishError(null);
-                navigate("/Student-dashboard?tab=posts");
+                navigate("/dashboard?tab=posts");
             }
         } catch (error) {
             setPublishError('Something went wrong');

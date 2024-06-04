@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import JobCard from '../components/JobCard';
+import { Carousel } from "flowbite-react";
 
 const Home = () => {
   const [jobs, setJobs] = useState([]);
   const [events, setEvents] = useState([]);
+  const [showMore, setShowMore] = useState(true);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -26,10 +28,15 @@ const Home = () => {
 
     const fetchEvents = async () => {
         try {
-          const response = await fetch('http://localhost:3000/server/event/displayevent');
+          const response = await fetch('/server/event/displayevent');
           const result = await response.json();
         
-          setEvents(result.event.slice(0, 2));
+          if (response.ok) {
+            setEvents(result.events);
+            if (data.events.length < 3) {
+              setShowMore(false);
+            }
+          }
         } catch (error) {
           console.error('Error fetching events:', error);
         }
@@ -39,30 +46,42 @@ const Home = () => {
       fetchEvents();
   }, []);
 
+  const handleShowMore = async () => {
+    const startIndex = events.length;
+    try {
+      const response = await fetch(`/server/event/displayevent?startIndex=${startIndex}`);
+      const data = await response.json();
+      if (response.ok) {
+        setEvents((prev) => [...prev, ...data.events]);
+        if (data.events.length < 3) {
+          setShowMore(false);
+        }
+      }
+    } catch (error) {
+      console.log('Error fetching more events:', error);
+    }
+  };
+
   return (
     <div className="min-h-screen">
-      <div className="relative h-[500px] md:h-[700px]">
-        <img
-          src="home2.jpg"
-          alt="College"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white text-4xl md:text-6xl  italic text-center px-4">
-            The future belongs to those who believe in the beauty of their dreams.
-          </h1>
-        </div>
+      <div className="h-80 sm:h-96 xl:h-[500px] 2xl:h-[600px] p-0.5">
+        <Carousel>
+          <img src="https://cdn.pixabay.com/photo/2018/01/18/09/13/book-3089857_640.jpg" alt="..." className='object-cover'/>
+          <img src="https://cdn.pixabay.com/photo/2015/07/19/10/00/school-work-851328_640.jpg" alt="..." className='object-cover' />
+          <img src="https://cdn.pixabay.com/photo/2015/11/19/21/11/book-1052014_640.jpg" alt="..." className='object-cover' />
+          <img src="https://cdn.pixabay.com/photo/2019/11/19/22/24/watch-4638673_640.jpg" alt="..." className='object-cover' />
+        </Carousel>
       </div>
 
       {/* Latest Jobs Section */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-semibold mb-8 text-center  text-gray-500 ">Latest Job Openings</h2>
         {jobs.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {jobs.map((job) => (
               <JobCard key={job._id} job={job} />
             ))}
+            
           </div>
         ) : (
           <p className="text-center text-gray-600">No jobs available at the moment.</p>
@@ -71,34 +90,44 @@ const Home = () => {
     
 
      {/* Latest Events Section */}
-     <div className="min-h-screen mt-20 p-5">
-     <h2 className="text-3xl font-semibold mb-8 text-center  text-gray-500">Upcoming Events</h2>
+      <div className="min-h-screen mt-20 p-5 dark:text-white">
+        <h2 className="text-3xl font-semibold mb-8 text-center text-gray-500 ">Upcoming Events</h2>
      {events.length > 0 ? (
         <ul className="space-y-4">
           {events.map((event) => (
             <li key={event._id}>
-              <div className="bg-white border-2 rounded-lg p-6 mb-4 border-custom-blue">
+              <div className=" border-2 rounded-lg p-6 mb-4 border-custom-blue">
               <div className="flex flex-row">
-                  <div className="w-1/4 flex flex-col items-center justify-center bg-gray-100 p-3">
-                    <p className="text-xl font-semibold text-gray-800 mb-2">{new Date(event.date).toLocaleString('en-US', { month: 'long', day: 'numeric' })}</p>
-                    <p className="text-gray-700">{event.location}</p>
+                  <div className="w-1/4 flex flex-col items-center justify-center  p-3">
+                    <p className="text-xl font-semibold  mb-2">{new Date(event.date).toLocaleString('en-US', { month: 'long', day: 'numeric' })}</p>
+                    <p className="">{event.location}</p>
                   </div>
                   <div className="w-3/4 pl-5">
-                    <h2 className="text-xl font-semibold text-gray-800 mb-2">{event.eventName}</h2>
-                    <p className="text-gray-600 mb-2">Time: {event.time}</p>
-                    <p className="text-gray-600 mb-2">Organized By: {event.organizedBy}</p>
-                    <p className="text-gray-600 mb-2">Contact Number: {event.contactNo}</p>
-                    <p className="text-gray-600 mb-2">Description: {event.description}</p>
+                    <h2 className="text-xl font-semibold mb-2">{event.eventName}</h2>
+                    <p className=" mb-2">Time: {event.time}</p>
+                    <p className=" mb-2">Organized By: {event.organizedBy}</p>
+                    <p className=" mb-2">Contact Number: {event.contactNo}</p>
+                    <p className=" mb-2">Description: {event.description}</p>
                   </div>
                 </div>
               </div>
             </li>
           ))}
+            {showMore && (
+              <button
+                onClick={handleShowMore}
+                className='w-full text-teal-500 self-center text-sm py-7'
+              >
+                Show more
+              </button>
+            )}
         </ul>
+        
       ) : (
         <p>No events available.</p>
       )}
    </div>
+  
    </div>
  
   );

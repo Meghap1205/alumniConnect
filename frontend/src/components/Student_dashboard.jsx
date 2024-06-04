@@ -5,6 +5,9 @@ import DashSidebar from '../components/Student_dashsidebar';
 import DashProfile from '../components/Student_dashprofile';
 import DashGallery from '../components/DashGallery';
 import DashUsers from '../components/DashUsers';
+import AdminDeleteJob from '../pages/AdminDeleteJob';
+import AdminDeleteEvent from '../pages/AdminDeleteEvent';
+
 
 export default function Dashboard() {
   const location = useLocation();
@@ -24,6 +27,9 @@ export default function Dashboard() {
       {tab === 'profile' && <DashProfile />}
       {tab === 'posts' && <DashGallery />}
       {tab === 'users' && <DashUsers />}
+      {tab === 'jobs' && <AdminDeleteJob />}
+      {tab === 'events' && <AdminDeleteEvent />}
+
     </div>
   )
 }

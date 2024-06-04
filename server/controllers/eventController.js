@@ -29,8 +29,16 @@ const addevent = async (req, res) => {
 
 const displayevent = async (req, res) => {
     try {
-        const data = await Event.find();
-        res.status(200).json({ event: data });
+        const startIndex = parseInt(req.query.startIndex) || 0;
+        const limit = parseInt(req.query.limit) || 3;
+        const sortDirection = req.query.sort === "asc" ? 1 : -1;
+
+        const events = await Event.find()
+          .sort({ createdAt: sortDirection })
+          .skip(startIndex)
+          .limit(limit);
+
+        res.status(200).json({ events : events });
     } catch (error) {
         res.status(500).json({ message: "Server error in displaying event. Please try again later." });
     }
