@@ -16,7 +16,7 @@ import AdminDeleteEvent from './pages/AdminDeleteEvent.jsx'
 import Contact from './pages/Contact.jsx';
 import AdminContact from './pages/AdminContact.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
-import Student_dashboard from './components/Student_dashboard.jsx';
+import Student_dashboard from './pages/Student_dashboard.jsx';
 import NotFound from './pages/NotFound.jsx';
 import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute';
 import DisplayAlumni from './pages/AlumniList.jsx';
@@ -25,12 +25,15 @@ import CreateGallery from './pages/CreateGallery.jsx';
 import UpdateGallery from './pages/UpdateGallery.jsx';
 import AlumniLogin from './pages/AlumniLogin.jsx';
 import AlumniSignup from './pages/AlumniSignup.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
+import Gallery from './pages/Gallery.jsx';
 
 
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -40,6 +43,7 @@ export default function App() {
         <Route path="/alumni-signup" element={< AlumniSignup />} />
         <Route path="/about" element={<About />} />
         <Route path="/jobs" element={<Jobs />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="/officebearer/:companyname" element={<FetchAlumni />} />
         <Route path="/event" element={<Event />} />
         <Route path="/contactus" element={<Contactus />} />

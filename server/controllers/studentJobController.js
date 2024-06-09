@@ -1,4 +1,5 @@
 const Job = require("../models/jobModel.js");
+const errorHandler = require("../utils/error");
 
 const displayJobs = async (req, res) => {
     try {
@@ -38,4 +39,41 @@ const adminDeleteJob = async (req, res) => {
     }
 };
 
-module.exports = { displayJobs, adminInsertJobs, adminDeleteJob };
+const getJobs = async (req, res, next) => {
+  if (!req.student.isAdmin) {
+    return next(errorHandler(403, "You are not allowed to get all jobs"));
+  }
+  try {
+    const startIndex = parseInt(req.query.startIndex) || 0;
+    const limit = parseInt(req.query.limit) || 9;
+    const sortDirection = req.query.sort === "asc" ? 1 : -1;
+
+    const jobs = await Job.find()
+      .sort({ createdAt: sortDirection })
+      .skip(startIndex)
+      .limit(limit);
+
+    const totalJobs = await Job.countDocuments();
+
+    const now = new Date();
+
+    const oneMonthAgo = new Date(
+      now.getFullYear(),
+      now.getMonth() - 1,
+      now.getDate()
+    );
+    const lastMonthJobs = await Job.countDocuments({
+      createdAt: { $gte: oneMonthAgo },
+    });
+
+    res.status(200).json({
+      jobs,
+      totalJobs,
+      lastMonthJobs,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { displayJobs, adminInsertJobs, adminDeleteJob, getJobs };

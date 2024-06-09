@@ -28,7 +28,7 @@ const Home = () => {
 
     const fetchEvents = async () => {
         try {
-          const response = await fetch('/server/event/displayevent');
+          const response = await fetch('/server/event/getevents');
           const result = await response.json();
         
           if (response.ok) {
@@ -49,7 +49,7 @@ const Home = () => {
   const handleShowMore = async () => {
     const startIndex = events.length;
     try {
-      const response = await fetch(`/server/event/displayevent?startIndex=${startIndex}`);
+      const response = await fetch(`/server/event/getevents?startIndex=${startIndex}`);
       const data = await response.json();
       if (response.ok) {
         setEvents((prev) => [...prev, ...data.events]);
