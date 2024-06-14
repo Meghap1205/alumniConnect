@@ -34,7 +34,7 @@ const ContactList = () => {
   };
 
   return (
-    <div className="min-h-screen mt-20 p-5">
+    <div className="max-w-4xl mx-auto p-3 w-full">
       <h1 className="text-2xl font-bold mb-5">Contact List</h1>
       {contacts.length > 0 ? (
         <ul className="space-y-4">

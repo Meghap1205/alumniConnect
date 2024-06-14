@@ -73,8 +73,8 @@ export default function DashSidebar() {
                     }
                     {
                         currentstudent.isAdmin && (
-                            <Link to={'/admin/insertjobs'}>
-                                <Sidebar.Item icon={FaUpload} className='cursor-pointer'>
+                            <Link to={'/dashboard?tab=addjob'}>
+                                <Sidebar.Item active={tab === 'addjob'} icon={FaUpload} className='cursor-pointer'>
                                     Upload Job
                                 </Sidebar.Item>
                             </Link>
@@ -96,8 +96,8 @@ export default function DashSidebar() {
                     {
 
                         currentstudent.isAdmin && (
-                            <Link to='/admin/create-post' >
-                                <Sidebar.Item  icon={FaUpload} as='div'>
+                            <Link to='/dashboard?tab=createpost' >
+                                <Sidebar.Item  active={tab === 'createpost'} icon={FaUpload} as='div'>
                                     Upload Gallery
                                 </Sidebar.Item>
 
@@ -118,8 +118,8 @@ export default function DashSidebar() {
                     
                     {
                         currentstudent.isAdmin && (
-                            <Link to={'/admin/addevent'}>
-                                <Sidebar.Item 
+                            <Link to={'/dashboard?tab=addevent'}>
+                                <Sidebar.Item active={tab === 'addevent'}
                                 icon={FaUpload} className='cursor-pointer'>
                                     Upload Event
                                 </Sidebar.Item>
@@ -137,8 +137,8 @@ export default function DashSidebar() {
                     }
                     {
                         currentstudent.isAdmin && (
-                            <Link to={'/admin/contact'}>
-                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
+                            <Link to={'/dashboard?tab=contact'}>
+                                <Sidebar.Item active={tab === 'contact'} icon={HiArrowSmRight} className='cursor-pointer'>
                                     Contact Admin
                                 </Sidebar.Item>
                             </Link>

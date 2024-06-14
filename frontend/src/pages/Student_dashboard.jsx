@@ -8,7 +8,10 @@ import DashUsers from '../components/DashUsers';
 import AdminDeleteJob from './AdminDeleteJob';
 import AdminDeleteEvent from './AdminDeleteEvent';
 import DashboardComp from '../components/DashboardComp';
-
+import AdminJobs from "./AdminJobs";
+import CreatePost from './CreateGallery';
+import AdminAddEvent from './AdminAddEvent';
+import AdminContact from "./AdminContact";
 
 export default function Dashboard() {
   const location = useLocation();
@@ -25,12 +28,17 @@ export default function Dashboard() {
       <div className='md:w-56'>
         <DashSidebar />
       </div>
+      
       {tab === 'profile' && <DashProfile />}
       {tab === 'posts' && <DashGallery />}
       {tab === 'users' && <DashUsers />}
       {tab === 'jobs' && <AdminDeleteJob />}
       {tab === 'events' && <AdminDeleteEvent />}
+      {tab === 'addevent' && <AdminAddEvent />}
       {tab === 'dash' && <DashboardComp />}
+      {tab === 'addjob' && <AdminJobs/>}
+      {tab === 'contact' && <AdminContact/>}
+      {tab === 'createpost' && <CreatePost/>}
       
 
     </div>
