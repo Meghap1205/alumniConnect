@@ -6,6 +6,6 @@ const router = express.Router();
 router.get("/displayjob", displayJobs);
 router.post("/admin/insertjobs", adminInsertJobs);
 router.delete("/admin/deleteJobs/:id", adminDeleteJob);
-router.get("/getjobs", verifyToken, getJobs);
+router.get("/getjobs", getJobs);
 
 module.exports = router;

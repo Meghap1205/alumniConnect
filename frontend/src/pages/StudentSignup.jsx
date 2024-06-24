@@ -2,7 +2,7 @@ import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Signup() {
+export default function StudentSignup() {
     const [formData, setFormData] = useState({});
     const [errorMessage, setErrorMessage] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -17,14 +17,14 @@ export default function Signup() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!formData.name || !formData.email || !formData.password || !formData.studentID || !formData.dateOfBirth || !formData.address || !formData.contact) {
+        if (!formData.name || !formData.email || !formData.password || !formData.studentID  || !formData.contact) {
             return setErrorMessage('Please fill out all fields.');
         }
         try {
             setLoading(true);
             setErrorMessage(null);
 
-            const res = await fetch('/server/studentauth/signup', {
+            const res = await fetch('/server/studentauth/student-signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
@@ -40,7 +40,7 @@ export default function Signup() {
             }
             setLoading(false);
             if (res.ok) {
-                navigate('/login');
+                navigate('/student-login');
             }
 
         } catch (error) {
@@ -96,26 +96,6 @@ export default function Signup() {
                             />
                         </div>
                         <div>
-                            <Label value='Your DateOfBirth' />
-                            <TextInput
-                                type='date'
-                                placeholder='dateOfBirth'
-                                id='dateOfBirth'
-                                onChange={handleChange}
-
-                            />
-                        </div>
-                        <div>
-                            <Label value='Your address' />
-                            <TextInput
-                                type='text'
-                                placeholder='address'
-                                id='address'
-                                onChange={handleChange}
-
-                            />
-                        </div>
-                        <div>
                             <Label value='Your contact' />
                             <TextInput
                                 type='text'
@@ -145,7 +125,7 @@ export default function Signup() {
                     </form>
                     <div className='flex gap-2 text-sm mt-5'>
                         <span>Have an account?</span>
-                        <Link to='/login' className='text-blue-500' >
+                        <Link to='/student-login' className='text-blue-500' >
                             Sign In
                         </Link>
                     </div>

@@ -2,7 +2,7 @@ import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function alumniSignup() {
+export default function AlumniSignup() {
     const [formData, setFormData] = useState({});
     const [errorMessage, setErrorMessage] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -17,14 +17,14 @@ export default function alumniSignup() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!formData.name || !formData.email || !formData.password || !formData.alumniID || !formData.contact || !formData.company || !formData.startDate || !formData.role || !formData.linkedinUrl || !formData.graduationYear) {
+        if (!formData.name || !formData.email || !formData.password || !formData.studentID || !formData.contact || !formData.company || !formData.startDate || !formData.role || !formData.linkedinUrl || !formData.graduationYear) {
             return setErrorMessage('Please fill out all fields.');
         }
         try {
             setLoading(true);
             setErrorMessage(null);
 
-            const res = await fetch('/server/alumniauth/alumni-signup', {
+            const res = await fetch('/server/studentauth/alumni-signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
@@ -86,11 +86,11 @@ export default function alumniSignup() {
                             />
                         </div>
                         <div>
-                            <Label value='Your alumniID' />
+                            <Label value='Your studentID' />
                             <TextInput
                                 type='text'
-                                placeholder='alumniID'
-                                id='alumniID'
+                                placeholder='studentID'
+                                id='studentID'
                                 onChange={handleChange}
 
                             />
@@ -115,7 +115,7 @@ export default function alumniSignup() {
 
                             />
                         </div>
-                        
+
                         <div>
                             <Label value='Your company' />
                             <TextInput
@@ -176,7 +176,7 @@ export default function alumniSignup() {
                     </form>
                     <div className='flex gap-2 text-sm mt-5'>
                         <span>Have an account?</span>
-                        <Link to='/login' className='text-blue-500' >
+                        <Link to='/alumni-login' className='text-blue-500' >
                             Sign In
                         </Link>
                     </div>
@@ -196,4 +196,3 @@ export default function alumniSignup() {
 
     );
 }
-

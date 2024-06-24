@@ -75,6 +75,7 @@ export default function DashUsers() {
                             <Table.HeadCell>Email</Table.HeadCell>
                             <Table.HeadCell>StudentId</Table.HeadCell>
                             <Table.HeadCell>Admin</Table.HeadCell>
+                            <Table.HeadCell>Alumni</Table.HeadCell>
                             <Table.HeadCell>Delete</Table.HeadCell>
                         </Table.Head>
                         {users.map((student) => (
@@ -95,6 +96,13 @@ export default function DashUsers() {
                                     <Table.Cell>{student.studentID}</Table.Cell>
                                     <Table.Cell>
                                         {student.isAdmin ? (
+                                            <FaCheck className='text-green-500' />
+                                        ) : (
+                                            <FaTimes className='text-red-500' />
+                                        )}
+                                    </Table.Cell>
+                                    <Table.Cell>
+                                        {student.isAlumni ? (
                                             <FaCheck className='text-green-500' />
                                         ) : (
                                             <FaTimes className='text-red-500' />

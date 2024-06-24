@@ -51,7 +51,7 @@ export default function Header() {
           <Link to='/event'>Events</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/gallery"} as={'div'}>
-          <Link to='/gallery'>Gallery</Link>
+          <Link to='/gallery'>Posts</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/contact"} as={'div'}>
           <Link to='/contact'>Contact us</Link>
@@ -89,11 +89,11 @@ export default function Header() {
         ) : (
           <>
             <Dropdown label="Login" dismissOnClick={false}>
-              <Dropdown.Item><Link to='/login'>Login as Student </Link></Dropdown.Item>
+              <Dropdown.Item><Link to='/student-login'>Login as Student </Link></Dropdown.Item>
               <Dropdown.Item><Link to='/alumni-login'>Login as Alumni </Link></Dropdown.Item>
             </Dropdown>
             <Dropdown label="Sign Up" dismissOnClick={false}>
-              <Dropdown.Item><Link to='/signup'>Signup as Student </Link></Dropdown.Item>
+              <Dropdown.Item><Link to='/student-signup'>Signup as Student </Link></Dropdown.Item>
               <Dropdown.Item><Link to='/alumni-signup'>Signup as Alumni </Link></Dropdown.Item>
             </Dropdown>
           </>

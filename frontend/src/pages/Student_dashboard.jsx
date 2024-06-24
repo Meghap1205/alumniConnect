@@ -5,9 +5,10 @@ import DashSidebar from '../components/Student_dashsidebar';
 import DashProfile from '../components/Student_dashprofile';
 import DashGallery from '../components/DashGallery';
 import DashUsers from '../components/DashUsers';
-import AdminDeleteJob from './AdminDeleteJob';
-import AdminDeleteEvent from './AdminDeleteEvent';
+import DashJobs from '../components/DashJobs';
+import DashEvents from '../components/DashEvents';
 import DashboardComp from '../components/DashboardComp';
+import DashContact from '../components/DashContact';
 
 
 export default function Dashboard() {
@@ -28,9 +29,10 @@ export default function Dashboard() {
       {tab === 'profile' && <DashProfile />}
       {tab === 'posts' && <DashGallery />}
       {tab === 'users' && <DashUsers />}
-      {tab === 'jobs' && <AdminDeleteJob />}
-      {tab === 'events' && <AdminDeleteEvent />}
+      {tab === 'jobs' && <DashJobs />}
+      {tab === 'events' && <DashEvents />}
       {tab === 'dash' && <DashboardComp />}
+      {tab === 'feedbacks' && <DashContact />}
       
 
     </div>

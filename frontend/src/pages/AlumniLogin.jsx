@@ -8,7 +8,7 @@ import {
     signInFailure,
 } from '../redux/student/studentSlice';
 
-export default function alumniLogin() {
+export default function AlumniLogin() {
     const [formData, setFormData] = useState({});
     const { error: errorMessage } = useSelector((state) => state.student);
     const dispatch = useDispatch();
@@ -18,12 +18,12 @@ export default function alumniLogin() {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!formData.alumniID || !formData.password) {
+        if (!formData.studentID || !formData.password) {
             return dispatch(signInFailure('Please fill all the fields'));
         }
         try {
             dispatch(signInStart());
-            const res = await fetch('/server/alumniauth/alumni-login', {
+            const res = await fetch('/server/studentauth/alumni-login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
@@ -50,11 +50,11 @@ export default function alumniLogin() {
                 <div className='flex-1'>
                     <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
                         <div>
-                            <Label value='Your alumniID' />
+                            <Label value='Your studentID' />
                             <TextInput
                                 type='text'
-                                placeholder='alumniID'
-                                id='alumniID'
+                                placeholder='studentID'
+                                id='studentID'
                                 onChange={handleChange}
                             />
                         </div>

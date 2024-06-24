@@ -40,9 +40,6 @@ const adminDeleteJob = async (req, res) => {
 };
 
 const getJobs = async (req, res, next) => {
-  if (!req.student.isAdmin) {
-    return next(errorHandler(403, "You are not allowed to get all jobs"));
-  }
   try {
     const startIndex = parseInt(req.query.startIndex) || 0;
     const limit = parseInt(req.query.limit) || 9;

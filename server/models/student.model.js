@@ -19,14 +19,7 @@ const studentSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  dateOfBirth: {
-    type: Date,
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
+
   contact: {
     type: Number,
     required: true,
@@ -41,10 +34,36 @@ const studentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  isAlumni:{
+    type:Boolean,
+    default:false,
+  },
+  
   profilePicture: {
       type: String,
       default:
         "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+    },
+
+    graduationYear: {
+        type: Number,
+        default: null  // Default value for students
+    },
+    company: {
+        type: String,
+        default: ""  // Default value for students
+    },
+    startDate: {
+        type: String,
+        default: ""  // Default value for students
+    },
+    role: {
+        type: String,
+        default: ""  // Default value for students
+    },
+    linkedinUrl: {
+        type: String,
+        default: ""  // Default value for students
     },
 });
 

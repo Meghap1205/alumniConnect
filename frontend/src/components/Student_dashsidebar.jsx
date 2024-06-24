@@ -11,6 +11,7 @@ import { signoutSuccess } from '../redux/student/studentSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from "react-redux";
 import { Alert, Button, Modal, ModalBody, TextInput } from 'flowbite-react'; 
+import { MdOutlineFeedback } from "react-icons/md";
 
 
 export default function DashSidebar() {
@@ -57,7 +58,7 @@ export default function DashSidebar() {
                         </Link>
                     )}
                     <Link to='/dashboard?tab=profile' >
-                        <Sidebar.Item active={tab === 'profile'} icon={HiUser} label={currentstudent.isAdmin ? 'Admin' : 'Student'} labelColor='dark' as='div'>
+                        <Sidebar.Item active={tab === 'profile'} icon={HiUser} label={currentstudent.isAdmin ? 'Admin' : currentstudent.isAlumni ? 'Alumni' : 'Student'} labelColor='dark' as='div'>
                             Profile
                         </Sidebar.Item>
                     </Link>
@@ -71,9 +72,19 @@ export default function DashSidebar() {
                             </Link>
                         )
                     }
+                
                     {
                         currentstudent.isAdmin && (
                             <Link to={'/admin/insertjobs'}>
+                                <Sidebar.Item icon={FaUpload} className='cursor-pointer'>
+                                    Upload Job
+                                </Sidebar.Item>
+                            </Link>
+                        )
+                    }
+                    {
+                        currentstudent.isAlumni && (
+                            <Link to={'/alumni/insertjobs'}>
                                 <Sidebar.Item icon={FaUpload} className='cursor-pointer'>
                                     Upload Job
                                 </Sidebar.Item>
@@ -86,19 +97,32 @@ export default function DashSidebar() {
                             currentstudent.isAdmin && (
                             <Link to='/dashboard?tab=posts' >
                                     <Sidebar.Item active={tab === 'posts'} icon={HiDocumentText} as='div'>
-                                        Gallery
+                                        Posts
                                     </Sidebar.Item>
 
                                 </Link>
                             )
                         
                     }
+                    
                     {
 
                         currentstudent.isAdmin && (
                             <Link to='/admin/create-post' >
                                 <Sidebar.Item  icon={FaUpload} as='div'>
-                                    Upload Gallery
+                                    Upload Posts
+                                </Sidebar.Item>
+
+                            </Link>
+                        )
+
+                    }
+                    {
+
+                        currentstudent.isAlumni && (
+                            <Link to='/alumni/create-post' >
+                                <Sidebar.Item icon={FaUpload} as='div'>
+                                    Upload Posts
                                 </Sidebar.Item>
 
                             </Link>
@@ -137,9 +161,9 @@ export default function DashSidebar() {
                     }
                     {
                         currentstudent.isAdmin && (
-                            <Link to={'/admin/contact'}>
-                                <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer'>
-                                    Contact Admin
+                            <Link to={'/dashboard?tab=feedbacks'}>
+                                <Sidebar.Item icon={MdOutlineFeedback} className='cursor-pointer'>
+                                    Feedback
                                 </Sidebar.Item>
                             </Link>
                         )
