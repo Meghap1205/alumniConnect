@@ -42,7 +42,7 @@ const Jobs = () => {
   return (
     <div className="container mx-auto py-8">
       <SearchBar onSearch={handleSearch} /> 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {filteredJobs.map(job => (
           <JobCard key={job._id} job={job} />
         ))}

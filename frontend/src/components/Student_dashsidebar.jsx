@@ -75,8 +75,8 @@ export default function DashSidebar() {
                 
                     {
                         currentstudent.isAdmin && (
-                            <Link to={'/admin/insertjobs'}>
-                                <Sidebar.Item icon={FaUpload} className='cursor-pointer'>
+                            <Link to={'/dashboard?tab=addjob'}>
+                                <Sidebar.Item active={tab === 'addjob'} icon={FaUpload} className='cursor-pointer'>
                                     Upload Job
                                 </Sidebar.Item>
                             </Link>
@@ -142,8 +142,8 @@ export default function DashSidebar() {
                     
                     {
                         currentstudent.isAdmin && (
-                            <Link to={'/admin/addevent'}>
-                                <Sidebar.Item 
+                            <Link to={'/dashboard?tab=addevent'}>
+                                <Sidebar.Item active={tab === 'addevent'}
                                 icon={FaUpload} className='cursor-pointer'>
                                     Upload Event
                                 </Sidebar.Item>

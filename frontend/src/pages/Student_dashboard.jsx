@@ -26,6 +26,7 @@ export default function Dashboard() {
       <div className='md:w-56'>
         <DashSidebar />
       </div>
+      
       {tab === 'profile' && <DashProfile />}
       {tab === 'posts' && <DashGallery />}
       {tab === 'users' && <DashUsers />}

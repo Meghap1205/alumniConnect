@@ -45,7 +45,7 @@ const DisplayAlumni = () => {
       <div className="mb-4">
         <SearchBar onSearch={handleSearch} />
       </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {filteredAlumni.map(alumnus => (
           <AlumniCard key={alumnus._id} alumnus={alumnus} />
         ))}
