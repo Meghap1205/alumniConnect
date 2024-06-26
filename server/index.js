@@ -19,13 +19,12 @@ app.use(cookieParser());
 
 app.use(express.json());
 
-const corsOptions = {
-  origin: "http://localhost:5173",
-  methods: "GET,POST, PUT, HEAD, DELETE, PATCH",
-  credentials: true,
-};
 
-app.use(cors(corsOptions));
+app.use(cors(
+  {origin: ["http://connect-alumni-frontend.vercel.app"],
+  methods: ["GET,POST, PUT, HEAD, DELETE, PATCH"],
+  credentials: true}
+));
 
 app.use('/uploads', express.static(path.join(__dirname, '../frontend/public/uploads')));
 
