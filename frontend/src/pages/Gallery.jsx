@@ -9,7 +9,9 @@ export default function Gallery() {
     useEffect(() => {
         try {
             const fetchRecentPosts = async () => {
-                const res = await fetch(`/server/post/getposts?limit=9`);
+                const res = await fetch(`https://connect-alumni-backend.vercel.app/server/post/getposts?limit=9`, {
+                    credentials: 'include',
+                });
                 const data = await res.json();
                 if (res.ok) {
                     setRecentPosts(data.posts);

@@ -13,7 +13,9 @@ export default function DashUsers() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await fetch(`/server/student/getusers` );
+                const res = await fetch(`https://connect-alumni-backend.vercel.app/server/student/getusers`, {
+                    credentials: 'include',
+                } );
                 const data = await res.json();
                 if (res.ok) {
                     setUsers(data.users);
@@ -33,7 +35,9 @@ export default function DashUsers() {
     const handleShowMore = async () => {
         const startIndex = users.length;
         try {
-            const res = await fetch(`/server/student/getusers?startIndex=${startIndex}`);
+            const res = await fetch(`https://connect-alumni-backend.vercel.app/server/student/getusers?startIndex=${startIndex}`, {
+                credentials: 'include',
+            });
             const data = await res.json();
             if (res.ok) {
                 setUsers((prev) => [...prev, ...data.users]);
@@ -48,8 +52,9 @@ export default function DashUsers() {
 
     const handleDeleteUser = async () => {
         try {
-            const res = await fetch(`/server/student/delete/${userIdToDelete}`, {
+            const res = await fetch(`https://connect-alumni-backend.vercel.app/server/student/delete/${userIdToDelete}`, {
                 method: 'DELETE',
+                credentials: 'include',
             });
             const data = await res.json();
             if (res.ok) {

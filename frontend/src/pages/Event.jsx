@@ -6,7 +6,9 @@ export default function DisplayEvents () {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('/server/event/getevents');
+        const response = await fetch('https://connect-alumni-backend.vercel.app/server/event/getevents', {
+          credentials: 'include',
+        });
         const result = await response.json();
         setEvents(result.events);
       } catch (error) {

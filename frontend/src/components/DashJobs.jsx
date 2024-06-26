@@ -40,9 +40,10 @@ export default function DashJobs() {
   const handleDeleteJob = async () => {
     setShowModal(false);
     try {
-      const res = await fetch(`/server/job/admin/deleteJobs/${jobIdToDelete}`,
+      const res = await fetch(`https://connect-alumni-backend.vercel.app/server/job/admin/deleteJobs/${jobIdToDelete}`,
         {
           method: 'DELETE',
+          credentials: 'include',
         }
       );
       const data = await res.json();

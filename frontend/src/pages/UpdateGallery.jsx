@@ -28,7 +28,7 @@ export default function UpdatePost() {
     useEffect(() => {
         try {
             const fetchPost = async () => {
-                const res = await fetch(`/server/post/getposts?postId=${postId}`);
+                const res = await fetch(`https://connect-alumni-backend.vercel.app/server/post/getposts?postId=${postId}`, {credentials: 'include',});
                 const data = await res.json();
                 if (!res.ok) {
                     console.log(data.message);
@@ -87,12 +87,13 @@ export default function UpdatePost() {
 
         e.preventDefault();
         try {
-            const res = await fetch(`/server/post/updatepost/${formData._id}/${currentstudent._id}`, {
+            const res = await fetch(`https://connect-alumni-backend.vercel.app/server/post/updatepost/${formData._id}/${currentstudent._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData),
+                credentials: 'include',
             });
             const data = await res.json();
             if (!res.ok) {

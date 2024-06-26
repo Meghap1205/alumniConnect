@@ -23,10 +23,11 @@ export default function StudentLogin() {
         }
         try {
             dispatch(signInStart());
-            const res = await fetch('/server/studentauth/student-login', {
+            const res = await fetch('https://connect-alumni-backend.vercel.app/server/studentauth/student-login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
+                credentials: 'include',
             });
             const data = await res.json();
             if (data.success === false) {

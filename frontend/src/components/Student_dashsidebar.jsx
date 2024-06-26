@@ -29,8 +29,9 @@ export default function DashSidebar() {
 
     const handleSignout = async () => {
         try {
-            const res = await fetch('/server/student/signout', {
+            const res = await fetch('https://connect-alumni-backend.vercel.app/server/student/signout', {
                 method: 'POST',
+                credentials: 'include',
             });
             const data = await res.json();
             if (!res.ok) {
