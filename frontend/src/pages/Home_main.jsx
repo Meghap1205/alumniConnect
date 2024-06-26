@@ -10,7 +10,7 @@ const Home = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch('http://connect-alumni-backend.vercel.app/server/job/displayjob', {
+        const response = await fetch('https://connect-alumni-backend.vercel.app/server/job/displayjob', {
           method: 'GET',
           credentials: 'include',
         });

@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/server': {
-        target: "http://connect-alumni-backend.vercel.app",
+        target: "https://connect-alumni-backend.vercel.app",
         secure: false,
       },
     },

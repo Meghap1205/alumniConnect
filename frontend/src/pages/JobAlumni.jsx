@@ -10,7 +10,7 @@ const FetchAlumni = () => {
 
   const fetchOfficeBearers = async () => {
     try {
-      const response = await fetch(`http://connect-alumni-backend.vercel.app/server/officebearer/${companyname}`, {
+      const response = await fetch(`https://connect-alumni-backend.vercel.app/server/officebearer/${companyname}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

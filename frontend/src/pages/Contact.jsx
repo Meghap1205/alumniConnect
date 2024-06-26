@@ -21,7 +21,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://connect-alumni-backend.vercel.app/server/contact/addcontact', {
+      const response = await fetch('https://connect-alumni-backend.vercel.app/server/contact/addcontact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

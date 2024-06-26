@@ -14,7 +14,7 @@ export default function DashJobs() {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await fetch('http://connect-alumni-backend.vercel.app/server/job/getjobs',{
+        const res = await fetch('https://connect-alumni-backend.vercel.app/server/job/getjobs',{
           credentials: 'include',
         });
         const data = await res.json();

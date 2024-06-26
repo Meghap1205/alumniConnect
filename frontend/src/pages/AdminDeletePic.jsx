@@ -6,7 +6,7 @@ const AdminDeletePic = () => {
   useEffect(() => {
     const fetchPictures = async () => {
       try {
-        const response = await fetch('http://connect-alumni-backend.vercel.app/server/gallery/displaygallery', {
+        const response = await fetch('https://connect-alumni-backend.vercel.app/server/gallery/displaygallery', {
           credentials: 'include',
         });
         const data = await response.json();
@@ -21,7 +21,7 @@ const AdminDeletePic = () => {
 
   const deletePicture = async (id) => {
     try {
-      const response = await fetch(`http://connect-alumni-backend.vercel.app/server/gallery/deletepicture/${id}`, {
+      const response = await fetch(`https://connect-alumni-backend.vercel.app/server/gallery/deletepicture/${id}`, {
         method: 'DELETE',
         credentials: 'include',
       });
@@ -43,7 +43,7 @@ const AdminDeletePic = () => {
         {pictures.map((picture) => (
           <div key={picture._id} className="bg-white shadow-md rounded-lg p-4">
             <img
-              src={`http://localhost:3000${picture.imageUrl}`}
+              src={`https://connect-alumni-backend.vercel.app${picture.imageUrl}`}
               alt={picture.description}
               className="w-full h-64 object-cover rounded-md"
             />
