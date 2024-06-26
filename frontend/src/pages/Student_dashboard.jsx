@@ -9,6 +9,9 @@ import DashJobs from '../components/DashJobs';
 import DashEvents from '../components/DashEvents';
 import DashboardComp from '../components/DashboardComp';
 import DashContact from '../components/DashContact';
+import AdminJobs from '../pages/AdminJobs';
+import CreatePost from '../pages/CreateGallery';
+import AdminAddEvent  from '../pages/AdminAddEvent';
 
 
 export default function Dashboard() {
@@ -34,6 +37,10 @@ export default function Dashboard() {
       {tab === 'events' && <DashEvents />}
       {tab === 'dash' && <DashboardComp />}
       {tab === 'feedbacks' && <DashContact />}
+      {tab === 'addevent' && <AdminAddEvent />}
+      {tab === 'addjob' && <AdminJobs/>}
+      {tab === 'createpost' && <CreatePost/>}
+
       
 
     </div>
