@@ -29,8 +29,9 @@ export default function DashSidebar() {
 
     const handleSignout = async () => {
         try {
-            const res = await fetch('/server/student/signout', {
+            const res = await fetch('https://connect-alumni-backend.vercel.app/server/student/signout', {
                 method: 'POST',
+                credentials: 'include',
             });
             const data = await res.json();
             if (!res.ok) {
@@ -108,8 +109,8 @@ export default function DashSidebar() {
                     {
 
                         currentstudent.isAdmin && (
-                            <Link to='/admin/create-post' >
-                                <Sidebar.Item  icon={FaUpload} as='div'>
+                            <Link to='/dashboard?tab=createpost' >
+                                <Sidebar.Item  active={tab === 'posts'}  icon={FaUpload} as='div'>
                                     Upload Posts
                                 </Sidebar.Item>
 

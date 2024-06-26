@@ -8,8 +8,9 @@ const DisplayAlumni = () => {
 
   const fetchAlumni = async () => {
     try {
-      const response = await fetch('http://localhost:3000/server/officebearer', {
+      const response = await fetch('https://connect-alumni-backend.vercel.app/server/officebearer', {
         method: "GET",
+        credentials: 'include',
       });
 
       if (response.ok) {

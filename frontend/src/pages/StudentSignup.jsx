@@ -24,10 +24,11 @@ export default function StudentSignup() {
             setLoading(true);
             setErrorMessage(null);
 
-            const res = await fetch('/server/studentauth/student-signup', {
+            const res = await fetch('https://connect-alumni-backend.vercel.app/server/studentauth/student-signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
+                credentials: 'include',
             });
 
             

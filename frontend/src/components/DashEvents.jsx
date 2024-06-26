@@ -13,7 +13,9 @@ export default function DashEvents() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch('/server/event/getevents');
+        const res = await fetch('https://connect-alumni-backend.vercel.app/server/event/getevents', {
+          credentials: 'include',
+        });
         const data = await res.json();
         if (res.ok) {
           setEvents(data.events);
@@ -37,10 +39,12 @@ export default function DashEvents() {
   const handleDeleteEvent = async () => {
     setShowModal(false);
     try {
-      const res = await fetch(`/server/event/deleteevent/${eventIdToDelete}`,
+      const res = await fetch(`https://connect-alumni-backend.vercel.app/server/event/deleteevent/${eventIdToDelete}`,
         {
           method: 'DELETE',
-        }
+          credentials: 'include',
+        },
+       
       );
       const data = await res.json();
       if (!res.ok) {

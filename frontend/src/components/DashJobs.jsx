@@ -14,7 +14,9 @@ export default function DashJobs() {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await fetch('http://localhost:3000/server/job/getjobs');
+        const res = await fetch('https://connect-alumni-backend.vercel.app/server/job/getjobs',{
+          credentials: 'include',
+        });
         const data = await res.json();
         if (res.ok) {
           setTotalJobs(data.jobs);
@@ -38,9 +40,10 @@ export default function DashJobs() {
   const handleDeleteJob = async () => {
     setShowModal(false);
     try {
-      const res = await fetch(`/server/job/admin/deleteJobs/${jobIdToDelete}`,
+      const res = await fetch(`https://connect-alumni-backend.vercel.app/server/job/admin/deleteJobs/${jobIdToDelete}`,
         {
           method: 'DELETE',
+          credentials: 'include',
         }
       );
       const data = await res.json();

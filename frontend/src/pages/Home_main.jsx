@@ -10,8 +10,9 @@ const Home = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch('http://localhost:3000/server/job/displayjob', {
+        const response = await fetch('https://connect-alumni-backend.vercel.app/server/job/displayjob', {
           method: 'GET',
+          credentials: 'include',
         });
 
         if (response.ok) {
@@ -28,7 +29,7 @@ const Home = () => {
 
     const fetchEvents = async () => {
         try {
-          const response = await fetch('/server/event/getevents');
+          const response = await fetch('https://connect-alumni-backend.vercel.app/server/event/getevents');
           const result = await response.json();
         
           if (response.ok) {
@@ -49,7 +50,9 @@ const Home = () => {
   const handleShowMore = async () => {
     const startIndex = events.length;
     try {
-      const response = await fetch(`/server/event/getevents?startIndex=${startIndex}`);
+      const response = await fetch(`https://connect-alumni-backend.vercel.app/server/event/getevents?startIndex=${startIndex}`, {
+        credentials: 'include',
+      });
       const data = await response.json();
       if (response.ok) {
         setEvents((prev) => [...prev, ...data.events]);

@@ -13,7 +13,8 @@ export default function DashPosts() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await fetch(`/server/post/getposts?userId=${currentstudent._id}`);
+                const res = await fetch(`https://connect-alumni-backend.vercel.app/server/post/getposts?userId=${currentstudent._id}`, {
+                    credentials: 'include',});
                 const data = await res.json();
                 if (res.ok) {
                     setUserPosts(data.posts);
@@ -34,7 +35,9 @@ export default function DashPosts() {
         const startIndex = userPosts.length;
         try {
             const res = await fetch(
-                `/server/post/getposts?userId=${currentstudent._id}&startIndex=${startIndex}`
+                `https://connect-alumni-backend.vercel.app/server/post/getposts?userId=${currentstudent._id}&startIndex=${startIndex}`, {
+                    credentials: 'include',
+                }
             );
             const data = await res.json();
             if (res.ok) {
@@ -52,9 +55,10 @@ export default function DashPosts() {
         setShowModal(false);
         try {
             const res = await fetch(
-                `/server/post/deletepost/${postIdToDelete}/${currentstudent._id}`,
+                `https://connect-alumni-backend.vercel.app/server/post/deletepost/${postIdToDelete}/${currentstudent._id}`,
                 {
                     method: 'DELETE',
+                    credentials: 'include',
                 }
             );
             const data = await res.json();

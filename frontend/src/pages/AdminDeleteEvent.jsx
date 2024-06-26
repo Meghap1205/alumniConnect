@@ -10,7 +10,9 @@ const AdminDeleteEvent = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('/server/event/getevents');
+        const response = await fetch('https://connect-alumni-backend.vercel.app/server/event/getevents', {
+          credentials: 'include',
+        });
         const result = await response.json();
         setEvents(result.events);
       } catch (error) {
@@ -23,8 +25,9 @@ const AdminDeleteEvent = () => {
 
   const deleteEvent = async (id) => {
     try {
-      const response = await fetch(`/server/event/deleteevent/${id}`, {
+      const response = await fetch(`https://connect-alumni-backend.vercel.app/server/event/deleteevent/${id}`, {
         method: 'DELETE',
+        credentials: 'include',
       });
 
       if (response.ok) {

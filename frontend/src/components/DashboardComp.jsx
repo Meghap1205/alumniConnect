@@ -28,7 +28,9 @@ export default function DashboardComp() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await fetch('/server/student/getusers?limit=5')
+                const res = await fetch('https://connect-alumni-backend.vercel.app/server/student/getusers?limit=5', {
+                    credentials: 'include',
+                })
                 const data = await res.json()
                 if (res.ok) {
                     setUsers(data.users)
@@ -41,7 +43,9 @@ export default function DashboardComp() {
         }
         const fetchJobs = async () => {
             try {
-                const res = await fetch('/server/job/getjobs?limit=5')
+                const res = await fetch('https://connect-alumni-backend.vercel.app/server/job/getjobs?limit=5', {
+                    credentials: 'include',
+                })
                 const data = await res.json()
                 if (res.ok) {
                     setJobs(data.jobs)
@@ -55,7 +59,9 @@ export default function DashboardComp() {
 
         const fetchPosts = async () => {
             try {
-                const res = await fetch('/server/post/getposts?limit=5')
+                const res = await fetch('https://connect-alumni-backend.vercel.app/server/post/getposts?limit=5', {
+                    credentials: 'include',
+                })
                 const data = await res.json()
                 if (res.ok) {
                     setPosts(data.posts)
@@ -69,7 +75,9 @@ export default function DashboardComp() {
 
         const fetchEvents = async () => {
             try {
-                const res = await fetch('/server/event/getevents?limit=5')
+                const res = await fetch('https://connect-alumni-backend.vercel.app/server/event/getevents?limit=5', {
+                    credentials: 'include',
+                })
                 const data = await res.json()
                 if (res.ok) {
                     setEvents(data.events)

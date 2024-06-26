@@ -99,12 +99,13 @@ export default function DashProfile() {
     }
     try {
       dispatch(updateStart());
-      const res = await fetch(`/server/student/update/${currentstudent._id}`, {
+      const res = await fetch(`https://connect-alumni-backend.vercel.app/server/student/update/${currentstudent._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+        credentials: 'include',
       });
       const data = await res.json();
       if (!res.ok) {
@@ -123,8 +124,9 @@ export default function DashProfile() {
     setShowModal(false);
     try {
       dispatch(deleteUsserStart());
-      const res = await fetch(`/server/student/delete/${currentstudent._id}`, {
+      const res = await fetch(`https://connect-alumni-backend.vercel.app/server/student/delete/${currentstudent._id}`, {
         method: "DELETE",
+        credentials: 'include',
       });
       const data = await res.json();
       if (!res.ok) {
@@ -139,8 +141,9 @@ export default function DashProfile() {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch("/server/student/signout", {
+      const res = await fetch("https://connect-alumni-backend.vercel.app/server/student/signout", {
         method: "POST",
+        credentials: 'include',
       });
       const data = await res.json();
       if (!res.ok) {
