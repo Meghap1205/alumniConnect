@@ -9,8 +9,9 @@ const Jobs = () => {
 
   const getJobs = async () => {
     try {
-      const response = await fetch('http://localhost:3000/server/job/displayjob', {
+      const response = await fetch('http://connect-alumni-backend.vercel.app/server/job/displayjob', {
         method: 'GET',
+        credentials: 'include',
       });
       if (response.ok) {
         const data = await response.json();

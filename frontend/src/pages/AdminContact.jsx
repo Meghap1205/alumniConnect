@@ -6,7 +6,7 @@ const ContactList = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await fetch('http://localhost:3000/server/contact/displaycontact');
+        const response = await fetch('http://connect-alumni-backend.vercel.app/server/contact/displaycontact', {credentials: 'include',});
         const data = await response.json();
         setContacts(data.contacts);
       } catch (error) {
@@ -19,8 +19,9 @@ const ContactList = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/server/contact/deletecontact/${id}`, {
+      const response = await fetch(`http://connect-alumni-backend.vercel.app/server/contact/deletecontact/${id}`, {
         method: 'DELETE',
+        credentials: 'include',
       });
 
       if (response.ok) {

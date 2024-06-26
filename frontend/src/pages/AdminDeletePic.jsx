@@ -6,7 +6,9 @@ const AdminDeletePic = () => {
   useEffect(() => {
     const fetchPictures = async () => {
       try {
-        const response = await fetch('http://localhost:3000/server/gallery/displaygallery');
+        const response = await fetch('http://connect-alumni-backend.vercel.app/server/gallery/displaygallery', {
+          credentials: 'include',
+        });
         const data = await response.json();
         setPictures(data);
       } catch (error) {
@@ -19,8 +21,9 @@ const AdminDeletePic = () => {
 
   const deletePicture = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/server/gallery/deletepicture/${id}`, {
+      const response = await fetch(`http://connect-alumni-backend.vercel.app/server/gallery/deletepicture/${id}`, {
         method: 'DELETE',
+        credentials: 'include',
       });
 
       if (response.ok) {

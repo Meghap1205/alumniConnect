@@ -10,12 +10,13 @@ const FetchAlumni = () => {
 
   const fetchOfficeBearers = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/server/officebearer/${companyname}`, {
+      const response = await fetch(`http://connect-alumni-backend.vercel.app/server/officebearer/${companyname}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
+        credentials: 'include',
       });
 
       if (response.ok) {

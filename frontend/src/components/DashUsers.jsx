@@ -13,7 +13,7 @@ export default function DashUsers() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await fetch(`/server/student/getusers`);
+                const res = await fetch(`/server/student/getusers` );
                 const data = await res.json();
                 if (res.ok) {
                     setUsers(data.users);

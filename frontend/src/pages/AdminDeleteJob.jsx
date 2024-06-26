@@ -10,8 +10,9 @@ const AdminDeleteJob = () => {
   // Fetching jobs from the backend
   const fetchJobs = async () => {
     try {
-      const response = await fetch('http://localhost:3000/server/job/displayjob', {
+      const response = await fetch('http://connect-alumni-backend.vercel.app/server/job/displayjob', {
         method: 'GET',
+        credentials: 'include',
       });
       if (response.ok) {
         const data = await response.json();
@@ -27,8 +28,9 @@ const AdminDeleteJob = () => {
   // Delete job by ID
   const deleteJob = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/server/job/admin/deleteJobs/${id}`, {
+      const response = await fetch(`http://connect-alumni-backend.vercel.app/server/job/admin/deleteJobs/${id}`, {
         method: 'DELETE',
+        credentials: 'include',
       });
       if (response.ok) {
         setJobs(jobs.filter(job => job._id !== id));

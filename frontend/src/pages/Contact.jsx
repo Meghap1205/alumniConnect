@@ -21,12 +21,13 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/server/contact/addcontact', {
+      const response = await fetch('http://connect-alumni-backend.vercel.app/server/contact/addcontact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+        credentials: 'include',
       });
 
       if (response.ok) {

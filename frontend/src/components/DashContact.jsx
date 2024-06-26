@@ -13,7 +13,10 @@ export default function DashContact() {
   useEffect(() => {
     const fetchContact = async () => {
       try {
-        const res = await fetch('http://localhost:3000/server/contact/displaycontact');
+        const res = await fetch('http://connect-alumni-backend.vercel.app/server/contact/displaycontact', {
+          method: 'GET', // or 'POST', 'PUT', etc.
+          credentials: 'include',
+        });
         const data = await res.json();
         if (res.ok) {
           setTcontacts(data.contacts);
@@ -38,9 +41,11 @@ export default function DashContact() {
     setShowModal(false);
     try {
       const res = await fetch(
-        `http://localhost:3000/server/contact/deletecontact/${contactIdToDelete}`,
+        `http://connect-alumni-backend.vercel.app/server/contact/deletecontact/${contactIdToDelete}, {
+        }`,
         {
           method: 'DELETE',
+          credentials: 'include',
         }
       );
       const data = await res.json();
