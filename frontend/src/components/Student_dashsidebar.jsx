@@ -109,8 +109,8 @@ export default function DashSidebar() {
                     {
 
                         currentstudent.isAdmin && (
-                            <Link to='/dashboard?tab=createpost' >
-                                <Sidebar.Item  active={tab === 'posts'}  icon={FaUpload} as='div'>
+                            <Link to='/admin/create-post' >
+                                <Sidebar.Item    icon={FaUpload} as='div'>
                                     Upload Posts
                                 </Sidebar.Item>
 
