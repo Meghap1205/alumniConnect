@@ -19,9 +19,8 @@ app.use(cookieParser());
 
 app.use(express.json());
 
-
 app.use(cors(
-  {origin: ["http://connect-alumni-frontend.vercel.app"],
+  {origin: ["https://connect-alumni-frontend.vercel.app"],
   methods: ["GET,POST, PUT, HEAD, DELETE, PATCH"],
   credentials: true}
 ));
