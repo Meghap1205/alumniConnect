@@ -77,6 +77,9 @@ const loginStudent = async (req, res, next) => {
       .status(200)
       .cookie("access_token", token, {
         httpOnly: true,
+        sameSite:"none",
+        secure:true,
+        maxAge:2100000,
       })
       .json(rest);
   } catch (error) {
