@@ -32,7 +32,4 @@
   <li>MongoDB</li>
   <li>Firebase Storage</li>
 </ul>
-<h2>Project Duration</h2>
-<p><strong>April 2024 – June 2024</strong></p>
-<h2>Contact</h2>
-<p>If you have any questions or feedback, please reach out at your-email@example.com.</p>
+
